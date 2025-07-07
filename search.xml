@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>IntelliJ IDEA导入eclipse web项目</title>
+    <url>/2016/10/28/IntelliJ-IDEA%E5%AF%BC%E5%85%A5eclipse-web%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<ol>
+<li>首先这是我从<code>svn checkout</code>的一个eclipse web项目</li>
+</ol>
+<img src="/uploads/article/20161028111657.png" class="" width="500" height="600">
+<span id="more"></span>
+<ol start="2">
+<li>在IDEA中依次打开<code>File-&gt;New-&gt;Project from Existing Sources</code></li>
+</ol>
+<img src="/uploads/article/20161028111854.png" class="" width="500" height="400">
+<ol start="3">
+<li>选中项目,在弹出框中选择<code>Import project</code> 然后选中<code>eclipse</code>，剩下的可以一直<code>next</code>,最后<code>finish</code></li>
+</ol>
+<img src="/uploads/article/20161028112044.png" class="" width="300" height="600"> <img src="/uploads/article/20161028112139.png" class="" width="300" height="600">
+<ol start="4">
+<li>按<code>ctrl+shift+alt+s</code>打开<code>Project Structure</code>,点击侧边栏的<code>Libraries</code>,然后点击绿色<code>&#39;+&#39;</code>,弹出框中选中<code>java</code></li>
+</ol>
+<img src="/uploads/article/20161028112816.png" class="" width="300" height="600">
+<ol start="5">
+<li>在弹出框中选中项目中<code>WebRoot/WEB-INF/lib</code>目录，点击ok,加载完成会提示用户选择模块，选中当前项目，点ok.</li>
+</ol>
+<img src="/uploads/article/20161028113018.png" class="" width="300" height="400">
+<ol start="6">
+<li>在<code>Project Structure</code>中选则左侧栏中的Facets点击绿色<code>&#39;+&#39;</code>，然后在弹出的框中选中Web选项，点击确定。</li>
+</ol>
+<img src="/uploads/article/20161028113244.png" class="" width="300" height="600">
+<ol start="7">
+<li>在右侧选择<code>web.xml</code>和<code>WebRoot</code>的正确目录,点击右侧绿色铅笔修改。</li>
+</ol>
+<img src="/uploads/article/20161028113707.png" class="" width="500" height="600">
+<ol start="8">
+<li>最后点击右下角的<code>Create Artifact</code>按钮 然后再点击右下角<code>Fix...</code>，选中<code>Add lib to the artifacts</code>,添加好后，点击确定就好了。</li>
+</ol>
+<img src="/uploads/article/20161028113749.png" class="" width="500" height="600">
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IntelliJ IDEA常用插件</title>
+    <url>/2016/11/02/IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="AceJump"><a href="#AceJump" class="headerlink" title="AceJump"></a>AceJump</h4><p>快速将光标跳转到编辑器可见的任何位置，使用快捷键<code>ctrl+;</code>打开AceJump模式,然后输入你想要<br>光标跳转的字符，这个时候当前屏幕中所有该字符都会被打上一个字母标记，然后你只需要输入标记<br>的字符，光标就可以跳转到这个字符上了。非常好用的一款插件.</p>
+<h4 id="codeGlance"><a href="#codeGlance" class="headerlink" title="codeGlance"></a>codeGlance</h4><p>在编辑器窗格中嵌入缩略图，可以快速定位代码.</p>
+<span id="more"></span>
+<h4 id="activate-power-mode"><a href="#activate-power-mode" class="headerlink" title="activate-power-mode"></a>activate-power-mode</h4><p>装过之后，会有如下效果:<br><img src="/uploads/article/ActivatePowerModePreview.gif" alt="PREVIEW"><br>如果你想设置它，比如不想让它跳动，可以在<code>Window-&gt;activate-power-mode-&gt;shake</code>去掉shake<br>前面的勾.</p>
+<h4 id="FindBugs-IDEA"><a href="#FindBugs-IDEA" class="headerlink" title="FindBugs-IDEA"></a>FindBugs-IDEA</h4><p>一个检查java代码缺陷的工具.</p>
+<h4 id="Eclipse-Code-Formatter"><a href="#Eclipse-Code-Formatter" class="headerlink" title="Eclipse Code Formatter"></a>Eclipse Code Formatter</h4><p>可以导入eclipse代码格式化文件。例如在一个团队中，使用一种代码风格，无论是IDEA还是eclipse<br>都可以使用.</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>Settings(ctrl+alt+s)-&gt;Plugins-&gt;Browse repositories</code>然后搜索插件的名字，就可以安装了<br>装好之后需要重启。</p>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>plugin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IntelliJ IDEA快捷键</title>
+    <url>/2016/10/28/IntelliJ-IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<h5 id="Search-Replace"><a href="#Search-Replace" class="headerlink" title="Search&#x2F;Replace"></a>Search&#x2F;Replace</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Double Shift</code></td>
+<td align="center">Search everywhere</td>
+</tr>
+<tr>
+<td><code>Ctrl + F</code></td>
+<td align="center">Find</td>
+</tr>
+<tr>
+<td><code>F3</code></td>
+<td align="center">Find next</td>
+</tr>
+<tr>
+<td><code>Shift + F3</code></td>
+<td align="center">Find previous</td>
+</tr>
+<tr>
+<td><code>Ctrl + R</code></td>
+<td align="center">Replace</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F</code></td>
+<td align="center">Find in path</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + R</code></td>
+<td align="center">Replace in path</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + S</code></td>
+<td align="center">Search structurally (Ultimate Edition only)</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + M</code></td>
+<td align="center">Replace structurally (Ultimate Edition only)</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h5 id="Editing"><a href="#Editing" class="headerlink" title="Editing"></a>Editing</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + Space</code></td>
+<td align="center">Basic code completion (the name of any class,method or variable)</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + Space</code></td>
+<td align="center">Smart code completion (filters the list of methods and variables by expected type)</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + Enter</code></td>
+<td align="center">Complete statement</td>
+</tr>
+<tr>
+<td><code>Ctrl + P</code></td>
+<td align="center">Parameter info (within method call arguments)</td>
+</tr>
+<tr>
+<td><code>Ctrl + Q</code></td>
+<td align="center">Quick documentation lookup</td>
+</tr>
+<tr>
+<td><code>Shift + F1</code></td>
+<td align="center">External Doc</td>
+</tr>
+<tr>
+<td><code>Ctrl + mouse over code</code></td>
+<td align="center">Brief Info</td>
+</tr>
+<tr>
+<td><code>Ctrl + F1</code></td>
+<td align="center">Show descriptions of error or warning at caret</td>
+</tr>
+<tr>
+<td><code>Alt + Insert</code></td>
+<td align="center">Generate code… (Getters, Setters, Constructors,hashCode&#x2F;equals, toString)</td>
+</tr>
+<tr>
+<td><code>Ctrl + O</code></td>
+<td align="center">Override methods</td>
+</tr>
+<tr>
+<td><code>Ctrl + I</code></td>
+<td align="center">Implement methods</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + T</code></td>
+<td align="center">Surround with… (if..else, try..catch, for,synchronized, etc.)</td>
+</tr>
+<tr>
+<td><code>Ctrl + /</code></td>
+<td align="center">Comment&#x2F;uncomment with line comment</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + /</code></td>
+<td align="center">Comment&#x2F;uncomment with block comment</td>
+</tr>
+<tr>
+<td><code>Ctrl + W</code></td>
+<td align="center">Select successively increasing code blocks</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + W</code></td>
+<td align="center">Decrease current selection to previous state</td>
+</tr>
+<tr>
+<td><code>Alt + Q</code></td>
+<td align="center">Context info</td>
+</tr>
+<tr>
+<td><code>Alt + Enter</code></td>
+<td align="center">Show intention actions and quick-fixes</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + L</code></td>
+<td align="center">Reformat code</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + O</code></td>
+<td align="center">Optimize imports</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + I</code></td>
+<td align="center">Auto-indent line(s)</td>
+</tr>
+<tr>
+<td><code>Tab / Shift + Tab</code></td>
+<td align="center">Indent&#x2F;unindent selected lines</td>
+</tr>
+<tr>
+<td><code>Ctrl + X , Shift + Delete</code></td>
+<td align="center">Cut current line or selected block to clipboard</td>
+</tr>
+<tr>
+<td><code>Ctrl + C , Ctrl + Insert</code></td>
+<td align="center">Copy current line or selected block to clipboard</td>
+</tr>
+<tr>
+<td><code>Ctrl + V , Shift + Insert</code></td>
+<td align="center">Paste from clipboard</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + V</code></td>
+<td align="center">Paste from recent buffers…</td>
+</tr>
+<tr>
+<td><code>Ctrl + D</code></td>
+<td align="center">Duplicate current line or selected block</td>
+</tr>
+<tr>
+<td><code>Ctrl + Y</code></td>
+<td align="center">Delete line at caret</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + J</code></td>
+<td align="center">Smart line join</td>
+</tr>
+<tr>
+<td><code>Ctrl + Enter</code></td>
+<td align="center">Smart line split</td>
+</tr>
+<tr>
+<td><code>Shift + Enter</code></td>
+<td align="center">Start new line</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + U</code></td>
+<td align="center">Toggle case for word at caret or selected block</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + ]/[</code></td>
+<td align="center">Select till code block end&#x2F;start</td>
+</tr>
+<tr>
+<td><code>Ctrl + Delete</code></td>
+<td align="center">Delete to word end</td>
+</tr>
+<tr>
+<td><code>Ctrl + Backspace</code></td>
+<td align="center">Delete to word start</td>
+</tr>
+<tr>
+<td><code>Ctrl + NumPad+/-</code></td>
+<td align="center">Expand&#x2F;collapse code block</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + NumPad+</code></td>
+<td align="center">Expand all</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + NumPad-</code></td>
+<td align="center">Collapse all</td>
+</tr>
+<tr>
+<td><code>Ctrl + F4</code></td>
+<td align="center">Close active editor tab</td>
+</tr>
+</tbody></table>
+<h5 id="Usage-Search"><a href="#Usage-Search" class="headerlink" title="Usage Search"></a>Usage Search</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt + F7 / Ctrl + F7</code></td>
+<td align="center">Find usages &#x2F; Find usages in file</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F7</code></td>
+<td align="center">Highlight usages in file</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + F7</code></td>
+<td align="center">Show usages</td>
+</tr>
+</tbody></table>
+<h5 id="Compile-and-Run"><a href="#Compile-and-Run" class="headerlink" title="Compile and Run"></a>Compile and Run</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + F9 Make project</code></td>
+<td align="center">(compile modifed and dependent)</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F9</code></td>
+<td align="center">Compile selected file, package or module</td>
+</tr>
+<tr>
+<td><code>Alt + Shift + F10</code></td>
+<td align="center">Select configuration and run</td>
+</tr>
+<tr>
+<td><code>Alt + Shift + F9</code></td>
+<td align="center">Select configuration and debug</td>
+</tr>
+<tr>
+<td><code>Shift + F10</code></td>
+<td align="center">Run</td>
+</tr>
+<tr>
+<td><code>Shift + F9</code></td>
+<td align="center">Debug</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F10</code></td>
+<td align="center">Run context configuration from editor</td>
+</tr>
+</tbody></table>
+<h5 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>F8</code></td>
+<td align="center">Step over</td>
+</tr>
+<tr>
+<td><code>F7</code></td>
+<td align="center">Step into</td>
+</tr>
+<tr>
+<td><code>Shift + F7</code></td>
+<td align="center">Smart step into</td>
+</tr>
+<tr>
+<td><code>Shift + F8</code></td>
+<td align="center">Step out</td>
+</tr>
+<tr>
+<td><code>Alt + F9</code></td>
+<td align="center">Run to cursor</td>
+</tr>
+<tr>
+<td><code>Alt + F8</code></td>
+<td align="center">Evaluate expression</td>
+</tr>
+<tr>
+<td><code>F9</code></td>
+<td align="center">Resume program</td>
+</tr>
+<tr>
+<td><code>Ctrl + F8</code></td>
+<td align="center">Toggle breakpoint</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F8</code></td>
+<td align="center">View breakpoints</td>
+</tr>
+</tbody></table>
+<h5 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + N</code></td>
+<td align="center">Go to class</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + N</code></td>
+<td align="center">Go to file</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + Shift + N</code></td>
+<td align="center">Go to symbol</td>
+</tr>
+<tr>
+<td><code>Alt + Right/Left</code></td>
+<td align="center">Go to next&#x2F;previous editor tab</td>
+</tr>
+<tr>
+<td><code>F12</code></td>
+<td align="center">Go back to previous tool window</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td align="center">Go to editor (from tool window)</td>
+</tr>
+<tr>
+<td><code>Shift + Esc</code></td>
+<td align="center">Hide active or last active window</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F4</code></td>
+<td align="center">Close active run&#x2F;messages&#x2F;find&#x2F;… tab</td>
+</tr>
+<tr>
+<td><code>Ctrl + G</code></td>
+<td align="center">Go to line</td>
+</tr>
+<tr>
+<td><code>Ctrl + E</code></td>
+<td align="center">Recent files popup</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + Left/Right</code></td>
+<td align="center">Navigate back&#x2F;forward</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + Backspace</code></td>
+<td align="center">Navigate to last edit location</td>
+</tr>
+<tr>
+<td><code>Alt + F1</code></td>
+<td align="center">Select current file or symbol in any view</td>
+</tr>
+<tr>
+<td><code>Ctrl + B , Ctrl + Click</code></td>
+<td align="center">Go to declaration</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + B</code></td>
+<td align="center">Go to implementation(s)</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + I</code></td>
+<td align="center">Open quick definition lookup</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + B</code></td>
+<td align="center">Go to type declaration</td>
+</tr>
+<tr>
+<td><code>Ctrl + U</code></td>
+<td align="center">Go to super-method&#x2F;super-class</td>
+</tr>
+<tr>
+<td><code>Alt + Up/Down</code></td>
+<td align="center">Go to previous&#x2F;next method</td>
+</tr>
+<tr>
+<td><code>Ctrl + ]/[</code></td>
+<td align="center">Move to code block end&#x2F;start</td>
+</tr>
+<tr>
+<td><code>Ctrl + F12</code></td>
+<td align="center">File structure popup</td>
+</tr>
+<tr>
+<td><code>Ctrl + H</code></td>
+<td align="center">Type hierarchy</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + H</code></td>
+<td align="center">Method hierarchy</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + H</code></td>
+<td align="center">Call hierarchy</td>
+</tr>
+<tr>
+<td><code>F2 / Shift + F2</code></td>
+<td align="center">Next&#x2F;previous highlighted error</td>
+</tr>
+<tr>
+<td><code>F4 / Ctrl + Enter</code></td>
+<td align="center">Edit source &#x2F; View source</td>
+</tr>
+<tr>
+<td><code>Alt + Home</code></td>
+<td align="center">Show navigation bar</td>
+</tr>
+<tr>
+<td><code>F11</code></td>
+<td align="center">Toggle bookmark</td>
+</tr>
+<tr>
+<td><code>Ctrl + F11</code></td>
+<td align="center">Toggle bookmark with mnemonic</td>
+</tr>
+<tr>
+<td><code>Ctrl + #[0-9]</code></td>
+<td align="center">Go to numbered bookmark</td>
+</tr>
+<tr>
+<td><code>Shift + F11</code></td>
+<td align="center">Show bookmarks</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h5 id="Refactoring"><a href="#Refactoring" class="headerlink" title="Refactoring"></a>Refactoring</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>F5</code></td>
+<td align="center">Copy</td>
+</tr>
+<tr>
+<td><code>F6</code></td>
+<td align="center">Move</td>
+</tr>
+<tr>
+<td><code>Alt + Delete</code></td>
+<td align="center">Safe Delete</td>
+</tr>
+<tr>
+<td><code>Shift + F6</code></td>
+<td align="center">Rename</td>
+</tr>
+<tr>
+<td><code>Ctrl + F6</code></td>
+<td align="center">Change Signature</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + N</code></td>
+<td align="center">Inline</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + M</code></td>
+<td align="center">Extract Method</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + V</code></td>
+<td align="center">Extract Variable</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + F</code></td>
+<td align="center">Extract Field</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + C</code></td>
+<td align="center">Extract Constant</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + P</code></td>
+<td align="center">Extract Parameter</td>
+</tr>
+</tbody></table>
+<h5 id="VCS-Local-History"><a href="#VCS-Local-History" class="headerlink" title="VCS&#x2F;Local History"></a>VCS&#x2F;Local History</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + K</code></td>
+<td align="center">Commit project to VCS</td>
+</tr>
+<tr>
+<td><code>Ctrl + T</code></td>
+<td align="center">Update project from VCS</td>
+</tr>
+<tr>
+<td><code>Alt + Shift + C</code></td>
+<td align="center">View recent changes</td>
+</tr>
+<tr>
+<td><code>Alt + BackQuote (</code>)&#96;</td>
+<td align="center">‘VCS’ quick popup</td>
+</tr>
+</tbody></table>
+<h5 id="Live-Templates"><a href="#Live-Templates" class="headerlink" title="Live Templates"></a>Live Templates</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + Alt + J</code></td>
+<td align="center">Surround with Live Template</td>
+</tr>
+<tr>
+<td><code>Ctrl + J</code></td>
+<td align="center">Insert Live Template</td>
+</tr>
+<tr>
+<td><code>iter</code></td>
+<td align="center">Iteration according to Java SDK 1.5 style</td>
+</tr>
+<tr>
+<td><code>inst</code></td>
+<td align="center">Check object type with instanceof and downcast it</td>
+</tr>
+<tr>
+<td><code>itco</code></td>
+<td align="center">Iterate elements of java.util.Collection</td>
+</tr>
+<tr>
+<td><code>itit</code></td>
+<td align="center">Iterate elements of java.util.Iterator</td>
+</tr>
+<tr>
+<td><code>itli</code></td>
+<td align="center">Iterate elements of java.util.List</td>
+</tr>
+<tr>
+<td><code>psf</code></td>
+<td align="center">public static final</td>
+</tr>
+<tr>
+<td><code>thr</code></td>
+<td align="center">throw new</td>
+</tr>
+</tbody></table>
+<h5 id="General"><a href="#General" class="headerlink" title="General"></a>General</h5><table>
+<thead>
+<tr>
+<th>shortcut key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt + #[0-9]</code></td>
+<td align="center">Open corresponding tool window</td>
+</tr>
+<tr>
+<td><code>Ctrl + S</code></td>
+<td align="center">Save all</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + Y</code></td>
+<td align="center">Synchronize</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + F12</code></td>
+<td align="center">Toggle maximizing editor</td>
+</tr>
+<tr>
+<td><code>Alt + Shift + F</code></td>
+<td align="center">Add to Favorites</td>
+</tr>
+<tr>
+<td><code>Alt + Shift + I</code></td>
+<td align="center">Inspect current file with current profile</td>
+</tr>
+<tr>
+<td><code>Ctrl + BackQuote (</code>)&#96;</td>
+<td align="center">Quick switch current scheme</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + S</code></td>
+<td align="center">Open Settings dialog</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + Shift + S</code></td>
+<td align="center">Open Project Structure dialog</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + A</code></td>
+<td align="center">Find Action</td>
+</tr>
+<tr>
+<td><code>Ctrl + Tab</code></td>
+<td align="center">Switch between tabs and tool window</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intellij IDEA Lambda提示 Can be replaced with method reference</title>
+    <url>/2016/11/10/Intellij-IDEA-Lambda%E6%8F%90%E7%A4%BA-Can-be-replaced-with-method-reference/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在IDEA中使用lambda表达式有时会有这样的提示：Can be replaced with method reference…<br><img src="/uploads/article/IntellijIDEALambda20161110151454.png" alt="提示"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>出现这种提示一般可以将表达式改为用<code>::</code>关键字</p>
+<table>
+<thead>
+<tr>
+<th>方法引用</th>
+<th align="center">等价的lambda表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String::valueOf</code></td>
+<td align="center"><code>x -&gt; String.valueOf(x)</code></td>
+</tr>
+<tr>
+<td><code>Object::toString</code></td>
+<td align="center"><code>x -&gt; x.toString()</code></td>
+</tr>
+<tr>
+<td><code>x::toString</code></td>
+<td align="center"><code>() -&gt; x.toString()</code></td>
+</tr>
+<tr>
+<td><code>ArrayList::new</code></td>
+<td align="center"><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>静态方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().forEach(s -&gt; System.out.println(s));//System.out.println(s)会有提示</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>如果调用有一个参数的普通方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;Tag&gt; tagList = Arrays.asList(new Tag(&quot;map&quot;),new Tag(&quot;java8&quot;),new Tag(&quot;filter&quot;));</span><br><span class="line">tagList.stream().map(tag -&gt; tag.getName());//tag.getName()会有提示</span><br></pre></td></tr></table></figure>
+<p>可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tagList.stream().map(Tag::getName);</span><br></pre></td></tr></table></figure>
+<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h4><p>还有两个参数的普通方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().sorted((o1, o2) -&gt; o1.compareTo(o2));//o1.compareTo(o2)会有提示</span><br></pre></td></tr></table></figure>
+<p>可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted(String::compareTo);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>Lambda</tag>
+        <tag>Java8</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL 数据库性能优化之SQL优化</title>
+    <url>/2016/10/24/MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BSQL%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h4 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h4><ol>
+<li><h5 id="减少-IO-次数"><a href="#减少-IO-次数" class="headerlink" title="减少 IO 次数"></a>减少 IO 次数</h5></li>
+</ol>
+<p>IO永远是数据库最容易瓶颈的地方，这是由数据库的职责所决定的，大部分数据库操作中超过90%的时间都是 IO 操作所占用的，减少 IO 次数是 SQL 优化中需要第一优先考虑，当然，也是收效最明显的优化手段。<br>2. ##### 降低 CPU 计算<br>除了 IO 瓶颈之外，SQL优化中需要考虑的就是 CPU 运算量的优化了。order by, group by,distinct … 都是消耗 CPU 的大户（这些操作基本上都是 CPU 处理内存中的数据比较运算）。当我们的 IO 优化做到一定阶段之后，降低 CPU 计算也就成为了我们 SQL 优化的重要目标</p>
+<span id="more"></span>
+
+<h4 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h4><ol>
+<li><h5 id="改变-SQL-执行计划"><a href="#改变-SQL-执行计划" class="headerlink" title="改变 SQL 执行计划"></a>改变 SQL 执行计划</h5></li>
+</ol>
+<p>明确了优化目标之后，我们需要确定达到我们目标的方法。对于 SQL 语句来说，达到上述2个目标的方法其实只有一个，那就是改变 SQL 的执行计划，让他尽量“少走弯路”，尽量通过各种“捷径”来找到我们需要的数据，以达到 “减少 IO 次数” 和 “降低 CPU 计算” 的目标</p>
+<h4 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h4><ol>
+<li><h5 id="count-1-和count-primary-key-优于-count"><a href="#count-1-和count-primary-key-优于-count" class="headerlink" title="count(1)和count(primary_key) 优于 count(*)"></a>count(1)和count(primary_key) 优于 count(*)</h5></li>
+</ol>
+<p>很多人为了统计记录条数，就使用 count(1) 和 count(primary_key) 而不是 count(<em>) ，他们认为这样性能更好，其实这是一个误区。对于有些场景，这样做可能性能会更差，应为数据库对 count(</em>) 计数操作做了一些特别的优化。<br>2. #####  count(column) 和 count(<em>) 是一样的<br>这个误区甚至在很多的资深工程师或者是 DBA 中都普遍存在，很多人都会认为这是理所当然的。实际上，count(column) 和 count(</em>) 是一个完全不一样的操作，所代表的意义也完全不一样。<br>count(column) 是表示结果集中有多少个column字段不为空的记录<br>count(<em>) 是表示整个结果集有多少条记录<br>3. ##### select a,b from … 比 select a,b,c from … 可以让数据库访问更少的数据量<br>这个误区主要存在于大量的开发人员中，主要原因是对数据库的存储原理不是太了解。<br>实际上，大多数关系型数据库都是按照行（row）的方式存储，而数据存取操作都是以一个固定大小的IO单元（被称作 block 或者 page）为单位，一般为4KB，8KB… 大多数时候，每个IO单元中存储了多行，每行都是存储了该行的所有字段（lob等特殊类型字段除外）。<br>所以，我们是取一个字段还是多个字段，实际上数据库在表中需要访问的数据量其实是一样的。<br>当然，也有例外情况，那就是我们的这个查询在索引中就可以完成，也就是说当只取 a,b两个字段的时候，不需要回表，而c这个字段不在使用的索引中，需要回表取得其数据。在这样的情况下，二者的IO量会有较大差异。<br>4. ##### order by 一定需要排序操作<br>我们知道索引数据实际上是有序的，如果我们的需要的数据和某个索引的顺序一致，而且我们的查询又通过这个索引来执行，那么数据库一般会省略排序操作，而直接将数据返回，因为数据库知道数据已经满足我们的排序需求了。<br>实际上，利用索引来优化有排序需求的 SQL，是一个非常重要的优化手段<br>延伸阅读：MySQL ORDER BY 的实现分析 ，MySQL 中 GROUP BY 基本实现原理 以及 MySQL DISTINCT 的基本实现原理 这3篇文章中有更为深入的分析，尤其是第一篇<br>5. ##### 执行计划中有 filesort 就会进行磁盘文件排序</em>*<br>有这个误区其实并不能怪我们，而是因为 MySQL 开发者在用词方面的问题。filesort 是我们在使用 explain 命令查看一条 SQL 的执行计划的时候可能会看到在 “Extra” 一列显示的信息。<br>实际上，只要一条 SQL 语句需要进行排序操作，都会显示“Using filesort”，这并不表示就会有文件排序操作。<br>延伸阅读：理解 MySQL Explain 命令输出中的filesort，我在这里有更为详细的介绍</p>
+<h4 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h4><ol>
+<li><h5 id="尽量少-join"><a href="#尽量少-join" class="headerlink" title="尽量少 join"></a>尽量少 join</h5></li>
+</ol>
+<p>MySQL 的优势在于简单，但这在某些方面其实也是其劣势。MySQL 优化器效率高，但是由于其统计信息的量有限，优化器工作过程出现偏差的可能性也就更多。对于复杂的多表 Join，一方面由于其优化器受限，再者在 Join 这方面所下的功夫还不够，所以性能表现离 Oracle 等关系型数据库前辈还是有一定距离。但如果是简单的单表查询，这一差距就会极小甚至在有些场景下要优于这些数据库前辈。<br>2. ##### 尽量少排序<br>排序操作会消耗较多的 CPU 资源，所以减少排序可以在缓存命中率高等 IO 能力足够的场景下会较大影响 SQL 的响应时间。<br>对于MySQL来说，减少排序有多种办法，比如：<br>上面误区中提到的通过利用索引来排序的方式进行优化<br>减少参与排序的记录条数<br>非必要不对数据进行排序<br>…<br>3. ##### 尽量避免 select *<br>很多人看到这一点后觉得比较难理解，上面不是在误区中刚刚说 select 子句中字段的多少并不会影响到读取的数据吗？<br>是的，大多数时候并不会影响到 IO 量，但是当我们还存在 order by 操作的时候，select 子句中的字段多少会在很大程度上影响到我们的排序效率，这一点可以通过我之前一篇介绍 MySQL ORDER BY 的实现分析 的文章中有较为详细的介绍。<br>此外，上面误区中不是也说了，只是大多数时候是不会影响到 IO 量，当我们的查询结果仅仅只需要在索引中就能找到的时候，还是会极大减少 IO 量的。<br>4. ##### 尽量用 join 代替子查询<br>虽然 Join 性能并不佳，但是和 MySQL 的子查询比起来还是有非常大的性能优势。MySQL 的子查询执行计划一直存在较大的问题，虽然这个问题已经存在多年，但是到目前已经发布的所有稳定版本中都普遍存在，一直没有太大改善。虽然官方也在很早就承认这一问题，并且承诺尽快解决，但是至少到目前为止我们还没有看到哪一个版本较好的解决了这一问题。<br>5. #####  尽量少 or **<br>当 where 子句中存在多个条件以“或”并存的时候，MySQL 的优化器并没有很好的解决其执行计划优化问题，再加上 MySQL 特有的 SQL 与 Storage 分层架构方式，造成了其性能比较低下，很多时候使用 union all 或者是union（必要的时候）的方式来代替“or”会得到更好的效果。<br>6. ##### 尽量用 union all 代替 union<br>union 和 union all 的差异主要是前者需要将两个（或者多个）结果集合并后再进行唯一性过滤操作，这就会涉及到排序，增加大量的 CPU 运算，加大资源消耗及延迟。所以当我们可以确认不可能出现重复结果集或者不在乎重复结果集的时候，尽量使用 union all 而不是 union。<br>7. ##### 尽量早过滤<br>这一优化策略其实最常见于索引的优化设计中（将过滤性更好的字段放得更靠前）。<br>在 SQL 编写中同样可以使用这一原则来优化一些 Join 的 SQL。比如我们在多个表进行分页数据查询的时候，我们最好是能够在一个表上先过滤好数据分好页，然后再用分好页的结果集与另外的表 Join，这样可以尽可能多的减少不必要的 IO 操作，大大节省 IO 操作所消耗的时间。<br>8. ##### 避免类型转换<br>这里所说的“类型转换”是指 where 子句中出现 column 字段的类型和传入的参数类型不一致的时候发生的类型转换：</p>
+<ul>
+<li>人为在column_name 上通过转换函数进行转换<br>直接导致 MySQL（实际上其他数据库也会有同样的问题）无法使用索引，如果非要转换，应该在传入的参数上进行转换</li>
+<li>由数据库自己进行转换<br>如果我们传入的数据类型和字段类型不一致，同时我们又没有做任何类型转换处理，MySQL 可能会自己对我们的数据进行类型转换操作，也可能不进行处理而交由存储引擎去处理，这样一来，就会出现索引无法使用的情况而造成执行计划问题。</li>
+</ul>
+<ol start="9">
+<li><h5 id="优先优化高并发的-SQL，而不是执行频率低某些“大”SQL"><a href="#优先优化高并发的-SQL，而不是执行频率低某些“大”SQL" class="headerlink" title="优先优化高并发的 SQL，而不是执行频率低某些“大”SQL"></a>优先优化高并发的 SQL，而不是执行频率低某些“大”SQL</h5></li>
+</ol>
+<p>对于破坏性来说，高并发的 SQL 总是会比低频率的来得大，因为高并发的 SQL 一旦出现问题，甚至不会给我们任何喘息的机会就会将系统压跨。而对于一些虽然需要消耗大量 IO 而且响应很慢的 SQL，由于频率低，即使遇到，最多就是让整个系统响应慢一点，但至少可能撑一会儿，让我们有缓冲的机会。<br>10. ##### 从全局出发优化，而不是片面调整<br>SQL 优化不能是单独针对某一个进行，而应充分考虑系统中所有的 SQL，尤其是在通过调整索引优化 SQL 的执行计划的时候，千万不能顾此失彼，因小失大。<br>11. #####  尽可能对每一条运行在数据库中的SQL进行 explain<br>优化 SQL，需要做到心中有数，知道 SQL 的执行计划才能判断是否有优化余地，才能判断是否存在执行计划问题。在对数据库中运行的 SQL 进行了一段时间的优化之后，很明显的问题 SQL 可能已经很少了，大多都需要去发掘，这时候就需要进行大量的 explain 操作收集执行计划，并判断是否需要进行优化。</p>
+<p>作者：Sky.Jian  <a href="http://isky000.com/database/mysql-performance-tuning-sql">原文地址</a></p>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>性能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java.util.Arrays.asList方法的小细节</title>
+    <url>/2017/02/22/java-util-Arrays-asList%E6%96%B9%E6%B3%95%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</url>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>先看这段代码,使用Arrays.asList返回一个List,然后在list中增加一个对象，抛出java.lang.UnsupportedOperationException，意思是不支持这个操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;);</span><br><span class="line">System.out.println(list);</span><br><span class="line">list.add(&quot;f&quot;);</span><br><span class="line">System.out.println(list);</span><br><span class="line">输出：</span><br><span class="line">[a, b, c, d, e]</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.UnsupportedOperationException</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>下面是java.Arrays.asList的源码,返回一个ArrayList，好像没有什么不对的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static &lt;T&gt; List&lt;T&gt; asList(T... a) &#123;</span><br><span class="line">return new ArrayList&lt;T&gt;(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是方法注释写着：<code>Returns a fixed-size list backed by the specified array...</code>返回由指定数组支持的固定大小的列表.</p>
+<p><strong>仔细观察的话，就会发现此时返回的ArrayList并不是我们熟悉的java.util.ArrayList，而是Arrays类中的一个静态内部类：</strong><br><code> private static class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements RandomAccess, java.io.Serializable</code><br><strong>此内部类继承与java.util.AbstractList，但是并没有实现add,remove方法</strong></p>
+<p>在java.util.AbstractList中的add和remove源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">    throw new UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public E remove(int index) &#123;</span><br><span class="line">    throw new UnsupportedOperationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到这两个方法直接就抛出异常，因为这两个方法是需要子类重写的。所以当我们使用asList时应注意返回的list大小是不能变的，如果想改变list的大小，可以这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list =new ArrayList&lt;&gt;(Arrays.asList(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;));</span><br></pre></td></tr></table></figure>
+<p>或者使用其他工具类。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java 两个变量交换的两种方法</title>
+    <url>/2016/10/20/java-%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F%E4%BA%A4%E6%8D%A2%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="1-两个变量求和然后相减"><a href="#1-两个变量求和然后相减" class="headerlink" title="1. 两个变量求和然后相减"></a>1. 两个变量求和然后相减</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">    int a = 12;</span><br><span class="line">    int b = 22;</span><br><span class="line">    a = a + b;</span><br><span class="line">    b = a - b;</span><br><span class="line">    a = a - b;</span><br><span class="line">    System.out.println(&quot;a=&quot; + a + &quot;;b=&quot; + b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h4 id="2-利用位运算的方式-原理是：一个数异或同一个数两次，结果还是那个数"><a href="#2-利用位运算的方式-原理是：一个数异或同一个数两次，结果还是那个数" class="headerlink" title="2. 利用位运算的方式 原理是：一个数异或同一个数两次，结果还是那个数"></a>2. 利用位运算的方式 原理是：<strong>一个数异或同一个数两次，结果还是那个数</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  private static void test()</span><br><span class="line">  &#123;</span><br><span class="line">      int c = 5;</span><br><span class="line">int d = 10;</span><br><span class="line">      c = c ^ d;</span><br><span class="line">      d = d ^ c;</span><br><span class="line">      c = d ^ c;</span><br><span class="line">      System.out.println(&quot;c=&quot; + c + &quot;;d=&quot; + d);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java8新特性</title>
+    <url>/2016/11/04/java8%E6%96%B0%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<h2 id="接口的默认方法和静态方法"><a href="#接口的默认方法和静态方法" class="headerlink" title="接口的默认方法和静态方法"></a>接口的默认方法和静态方法</h2><p>在接口中定义默认方法和静态方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface DefaultInterface&#123;</span><br><span class="line"></span><br><span class="line">    default void defaultFun()&#123;</span><br><span class="line">        System.out.println(&quot;default function!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    static void staticFun()&#123;</span><br><span class="line">        System.out.println(&quot;static function!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：<br>**<br>1.这两种方法的定义必须要有具体实现。<br>2.默认方法可以被实现类直接使用，也可以被实现类重写。<br>3.静态方法只能通过接口名调用。<br>**</p>
+<span id="more"></span>
+
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class DefaultImpl implements DefaultInterface&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void defaultFun()&#123;</span><br><span class="line">        System.out.println(&quot;override implementation&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Index &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        DefaultInterface.staticFun();</span><br><span class="line"></span><br><span class="line">        DefaultInterface defaultInterface = new DefaultInterface() &#123;&#125;;</span><br><span class="line">        defaultInterface.defaultFun();</span><br><span class="line"></span><br><span class="line">        DefaultInterface defaultInterface2 = new DefaultImpl();</span><br><span class="line">        defaultInterface2.defaultFun();</span><br><span class="line">        //DefaultImpl.staticFun();//无法调用</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static function!</span><br><span class="line">default function!</span><br><span class="line">override implementation</span><br></pre></td></tr></table></figure>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>Lambda允许把函数作为一个方法的参数（函数作为参数传递进方法中），也就是我们所说的函数式编程。<br><strong>怎样将一个函数作为参数传递？</strong><br>其实就是利用一个只有一个方法的接口（也就是函数式接口），new一个匿名类调用其中的唯一方法。<br>看如下代码，<code>FunctionInterface</code>是一个函数式接口，里边有一个抽象方法<code>method</code>,<code>callMethod</code>方法定义是直接调用<code>FunctionInterface.method()</code>;所以在调用callMethod方法的时候，参数可以直接new一个<code>FunctionInterface</code>，写好<code>method</code>的实现。此时也就是相当于我们将<code>method</code>方法直接传递给<code>callMethod</code>方法了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface FunctionInterface &#123;</span><br><span class="line">	void method();</span><br><span class="line">&#125;</span><br><span class="line">public class Index &#123;</span><br><span class="line">  public static void callMethod(FunctionInterface functionInterface)&#123;</span><br><span class="line">    functionInterface.method();</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">    callMethod(new FunctionInterface() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void method() &#123;</span><br><span class="line">          System.out.println(&quot;function interface&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是上边调用<code>callMethod</code>方法的代码看起来比较乱，比较难看，所以我们可以用Lambda表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Index &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		callMethod(() -&gt; System.out.println(&quot;function interface&quot;));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们来看一个例子,这是一个循环打印一个list的代码，利用forEach方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Arrays.asList( &quot;p&quot;, &quot;k&quot;, &quot;u&quot;,&quot;f&quot;, &quot;o&quot;, &quot;r&quot;,&quot;k&quot;).forEach(new Consumer&lt;String&gt;() &#123;</span><br><span class="line">  @Override</span><br><span class="line">  public void accept(String s) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果用Lambda表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Arrays.asList( &quot;p&quot;, &quot;k&quot;, &quot;u&quot;,&quot;f&quot;, &quot;o&quot;, &quot;r&quot;,&quot;k&quot;).forEach((String s) -&gt; System.out.println(s) );</span><br></pre></td></tr></table></figure>
+<p>还可以更简洁</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Arrays.asList( &quot;p&quot;, &quot;k&quot;, &quot;u&quot;,&quot;f&quot;, &quot;o&quot;, &quot;r&quot;,&quot;k&quot;).forEach( s -&gt; System.out.println(s) );</span><br></pre></td></tr></table></figure>
+<p>Java编译器能够自动识别参数的类型，所以你就可以省略掉类型不写。</p>
+<h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><p>函数式接口就是一个有且只有一个抽象方法的接口。也就是函数式接口也可以有默认方法和静态方法，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface FunctionInterface &#123;</span><br><span class="line">	void method();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>任何只有一个抽象方法的接口都可以做成Lambda表达式，所以为了保证你的接口可以用Lambda表达式，你应该给接口添加一个<code>@FunctionalInterface</code>注解，这个注解加上去之后，如果接口中定义了第二个抽象方法的话，编译器就会抛异常。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface FunctionInterface &#123;</span><br><span class="line">	void method();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法和构造函数引用"><a href="#方法和构造函数引用" class="headerlink" title="方法和构造函数引用"></a>方法和构造函数引用</h2><p>Java 8 允许你通过<code>::</code>关键字获取方法或者构造函数的的引用<br>静态方法：<br>如下，<code>DefaultInterface::staticFun</code>返回一个函数引用，相当于js中的闭包，由于<code>staticFun</code>是无参数也无返回值，而<code>Runnable</code>是一个无参数也无返回值的一个函数式接口，所以这里可以用<code>Runnable</code>来接收。当调用<code>staticFun.run();</code>的时候，才真正调用了<code>staticFun</code>方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface DefaultInterface&#123;</span><br><span class="line">    static void staticFun() &#123;</span><br><span class="line">        System.out.println(&quot;static function!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Index &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">		Runnable staticFun = DefaultInterface::staticFun;</span><br><span class="line">		staticFun.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造方法：<br>定义一个student类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">	private String name;</span><br><span class="line">	private String sex;</span><br><span class="line"></span><br><span class="line">	public Student(String name, String sex) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.sex = sex;</span><br><span class="line">	&#125;</span><br><span class="line">        public String getName() &#123;</span><br><span class="line">            return name;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Student:new</code>会返回Student构造方法的引用，此方法需要有两个String参数，返回Student对象，所以我新建一个<code>StudentConstructor</code>函数式接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface StudentConstructor&lt;P extends Student&gt; &#123;</span><br><span class="line">	P create(String name,String sex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在可以这样调用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">StudentConstructor&lt;Student&gt; constructor = Student::new;</span><br><span class="line">Student student = constructor.create(&quot;a&quot;,&quot;男&quot;);</span><br><span class="line">Supplier&lt;String&gt; getName = student::getName;</span><br><span class="line">System.out.println(getName.get());</span><br></pre></td></tr></table></figure>
+
+<h2 id="内置函数式接口"><a href="#内置函数式接口" class="headerlink" title="内置函数式接口"></a>内置函数式接口</h2><p>JDK 1.8 API中包含了很多内置的函数式接口。有些是在以前版本的Java中大家耳熟能详的，例如<code>Comparator</code>接口，或者<code>Runnable</code>接口。对这些现成的接口进行实现，可以通过<code>@FunctionalInterface</code> 标注来启用Lambda功能支持。</p>
+<p>此外，Java 8 API 还提供了很多新的函数式接口，来降低程序员的工作负担。有些新的接口已经在Google Guava库中很有名了。如果你对这些库很熟的话，你甚至闭上眼睛都能够想到，这些接口在类库的实现过程中起了多么大的作用。<br>1.Runnable<br>无参数，无返回值<br>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface DefaultInterface&#123;</span><br><span class="line">    static void staticFun() &#123;</span><br><span class="line">        System.out.println(&quot;static function!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Index &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">		Runnable staticFun = DefaultInterface::staticFun;</span><br><span class="line">		staticFun.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>static function!</code><br>2.Consumer<br>有一个参数，无返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Consumer&lt;String&gt; greeter = (p) -&gt; System.out.println(&quot;Hello, &quot; + p);</span><br><span class="line">greeter.accept(&quot;DoubleKill&quot;);</span><br></pre></td></tr></table></figure>
+<p>3.Predicate<br>有一个参数，返回布尔类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Predicate&lt;String&gt; predicate = (s) -&gt; s.length() &gt; 0;</span><br><span class="line">predicate.test(&quot;foo&quot;);              // true</span><br></pre></td></tr></table></figure>
+<p>像一些判断的方法都属于这种类型如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Predicate&lt;Boolean&gt; nonNull = Objects::nonNull;</span><br><span class="line">Predicate&lt;Boolean&gt; isNull = Objects::isNull;</span><br><span class="line"></span><br><span class="line">Predicate&lt;String&gt; isEmpty = String::isEmpty;</span><br><span class="line">Predicate&lt;String&gt; isNotEmpty = isEmpty.negate();</span><br></pre></td></tr></table></figure>
+<p>4.类似的还有：<br>Supplier：无参数，有返回值<br>Function：有一个参数，有返回值<br>UnaryOperator：无参数，有返回值，返回值还是一个UnaryOperator</p>
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p><code>Optional</code>类的Javadoc描述如下:</p>
+<blockquote>
+<p>这是一个值可以为null的容器对象。如果值存在则<code>isPresent()</code>方法会返回true，调用<code>get()</code>方法会返回该对象。</p>
+</blockquote>
+<p>例如有这样一个需求，从一个service的方法获取一个有可能为<code>null</code>的list，如果这个list不为<code>null</code>，就给list添加一个字符串：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = service.findAll();</span><br><span class="line">  if(list!=null)&#123;</span><br><span class="line">    list.add(&quot;more&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>此时我们如果使用<code>Optional</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Optional&lt;List&lt;String&gt;&gt; optional = service.findAll();</span><br><span class="line">		if(optional.isPresent())&#123;</span><br><span class="line">			List&lt;String&gt; studentList1 = optional.get();</span><br><span class="line">			studentList1.add(&quot;more&quot;);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们使用<code>Optional</code>中的<code>ifPresent</code>方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Optional&lt;List&lt;String&gt;&gt; optional = service.findAll();</span><br><span class="line">optional.ifPresent(stringList -&gt; stringList.add(&quot;more&quot;));</span><br></pre></td></tr></table></figure>
+<p>但我们发现代码变的优雅了但其实逻辑并没有简洁多少，那么用<code>Optional</code>的意义是什么？<br><strong><code>Optional</code>是一个简单的值容器，也是一个精巧的工具类，当某些方法返回<code>Optional</code>的时候，也就是告诉我们这个方法返回的值有可能为<code>null</code>，也有可能不为<code>null</code>，需要我们来进行判断,以此来防止<code>NullPointerEception</code>产生。</strong></p>
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p><code>java.util.Stream</code>接口的javadoc描述：</p>
+<blockquote>
+<p>一种支持顺序和并行聚合操作的元素序列。</p>
+</blockquote>
+<p><code>Stream</code>操作可以是中间操作，也可以是完结操作。完结操作会返回一个某种类型的值，而中间操作会返回流对象本身，并且你可以通过多次调用同一个流操作方法来将操作结果串起来。<code>Stream</code>是在一个源的基础上创建出来的，例如<code>java.util.Collection</code>中的list或者set（map不能作为<code>Stream</code>的源）。<code>Stream</code>操作往往可以通过顺序或者并行两种方式来执行。</p>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>Filter接受一个<code>predicate</code>接口类型的变量，并将所有流对象中的元素进行过滤。该操作是一个中间操作，因此它允许我们在返回结果的基础上再进行其他的流操作（forEach）。<code>ForEach</code>接受一个<code>Function</code>接口类型的变量，用来执行对每一个元素的操作。<code>ForEach</code>是一个中止操作。它不返回流，所以我们不能再调用其他的流操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().filter(s -&gt; s.startsWith(&quot;a&quot;)).forEach(System.out::println);</span><br><span class="line">// ac</span><br><span class="line">// axx</span><br></pre></td></tr></table></figure>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><p>sorted返回<code>Stream</code>对象，所以它是一个中间操作，能够返回一个排过序的流对象的视图。默认按照自然顺序对视图进行排序，当然你也可以指定一个<code>Comparator</code>来改变排序规则。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted().forEach(System.out::println);</span><br><span class="line">//ac</span><br><span class="line">//axx</span><br><span class="line">//c</span><br><span class="line">//ccc</span><br><span class="line">//dd</span><br><span class="line">//f</span><br></pre></td></tr></table></figure>
+<p>sorted只是创建一个流对象的排序视图，而原来的集合中元素是不变的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println(tags);</span><br><span class="line">// [ac, ccc, c, dd, axx, f]</span><br></pre></td></tr></table></figure>
+
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>map接受一个<code>Function</code>接口类型的变量，返回一个<code>Stream</code>对象，也是中间操作，但需要注意的是，map返回的<code>Stream</code>指定的泛型是根据传入的<code>Function</code>来指定的。源码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);</span><br></pre></td></tr></table></figure>
+<p>也就是说我们可以用map来变换Stream的泛型类型。<br>比如我们有一个文章的list,我想打印每个文章的title，利用map很容易就可以做到，为了看的更清楚，我把每一步都分开写了，可以看到，用map将<code>Stream&lt;Article&gt;</code>变换为<code>Stream&lt;String&gt;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Stream&lt;Article&gt; stream = articleList.stream();</span><br><span class="line"></span><br><span class="line">Stream&lt;String&gt; stringStream = stream.map(article -&gt; article.getTitle());</span><br><span class="line">stringStream.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<p>如果将上述代码串联起来：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">articleList</span><br><span class="line">  .stream()</span><br><span class="line">  .map(article -&gt; article.getTitle())</span><br><span class="line">  .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h3><p><code>flatMap</code>接受一个<code>Function</code>接口类型的变量，返回一个<code>Stream</code>对象，属于中间操作，用来做变换操作。源码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T, ? extends Stream&lt;? extends R&gt;&gt; mapper);</span><br></pre></td></tr></table></figure>
+<p>跟map不同的是，<code>flatMap</code>传入的<code>Function</code>的返回类型也是一个<code>Stream</code>。<br>比如我们有这样一个需求，打印所有文章的标签，每个文章有多个标签。我们可以这样写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">articleList</span><br><span class="line">  .stream()</span><br><span class="line">  .forEach(</span><br><span class="line">          article -&gt; article.getTags()</span><br><span class="line">                                .stream()</span><br><span class="line">                                .map(tag -&gt; tag.getName())</span><br><span class="line">                                .forEach(System.out::println)</span><br><span class="line">          );</span><br></pre></td></tr></table></figure>
+<p>代码做了两次<code>forEach</code>，很明显代码阅读性很差，下面我们用<code>flatMap</code>来写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">articleList</span><br><span class="line">  .stream()</span><br><span class="line">  .flatMap(article -&gt; article.getTags().stream())</span><br><span class="line">  .map(tag -&gt; tag.getName())</span><br><span class="line">  .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<p>flat单词意思有：vt:使变平，adj. 平的<br>一篇文章下有多个标签，但是用<code>flatMap</code>转换后，可以直接顺序操作其中每个标签，相当于把所有文章的标签平铺到一个list中来操作了。</p>
+<h3 id="Parallel-Streams"><a href="#Parallel-Streams" class="headerlink" title="Parallel Streams"></a>Parallel Streams</h3><p>像上面所说的，流操作可以是顺序的，也可以是并行的。顺序操作通过单线程执行，而并行操作则通过多线程执行。</p>
+<p>下面的例子就演示了如何使用并行流进行操作来提高运行效率，代码非常简单。</p>
+<p>首先我们创建一个大的list，里面的元素都是唯一的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int max = 1000000;</span><br><span class="line">List&lt;String&gt; values = new ArrayList&lt;&gt;(max);</span><br><span class="line">for (int i = 0; i &lt; max; i++) &#123;</span><br><span class="line">    UUID uuid = UUID.randomUUID();</span><br><span class="line">    values.add(uuid.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，我们测量一下对这个集合进行排序所使用的时间。</p>
+<p>顺序排序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">long t0 = System.nanoTime();</span><br><span class="line"></span><br><span class="line">long count = values.stream().sorted().count();</span><br><span class="line">System.out.println(count);</span><br><span class="line"></span><br><span class="line">long t1 = System.nanoTime();</span><br><span class="line"></span><br><span class="line">long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);</span><br><span class="line">System.out.println(String.format(&quot;sequential sort took: %d ms&quot;, millis));</span><br><span class="line"></span><br><span class="line">// sequential sort took: 899 ms</span><br></pre></td></tr></table></figure>
+<p>并行排序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">long t0 = System.nanoTime();</span><br><span class="line"></span><br><span class="line">long count = values.parallelStream().sorted().count();</span><br><span class="line">System.out.println(count);</span><br><span class="line"></span><br><span class="line">long t1 = System.nanoTime();</span><br><span class="line"></span><br><span class="line">long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);</span><br><span class="line">System.out.println(String.format(&quot;parallel sort took: %d ms&quot;, millis));</span><br><span class="line"></span><br><span class="line">// parallel sort took: 472 ms</span><br></pre></td></tr></table></figure>
+<p>如你所见，所有的代码段几乎都相同，唯一的不同就是把<code>stream()</code>改成了<code>parallelStream()</code>, 结果并行排序快了50%。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>Lambda</tag>
+        <tag>Java8</tag>
+        <tag>Stream</tag>
+        <tag>Optional</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jquery动态绑定事件</title>
+    <url>/2016/10/20/jquery%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<ul>
+<li>例如在下面div中,我们想给input绑定点击事件，但是这个input是后续动态加进去的，比如是异步加载过来的，所以我们如果直接用 $(“#test input:first”).click();jquery是找不到这个input的。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;test&quot;&gt;&lt;input type=&quot;button&quot; value=&quot;提交&quot; /&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>所以我们可以用on方法</li>
+</ul>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$(&quot;#test&quot;).on(&quot;click&quot;,&quot;input:first&quot;,function()&#123;</span><br><span class="line">    console.log(&#x27;点击&#x27;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>on() 方法在被选元素及子元素上添加一个或多个事件处理程序。<br>自 jQuery 版本 1.7 起，on() 方法是 bind()、live() 和 delegate() 方法的新的替代品。该方法给 API 带来很多便利，我们推荐使用该方法，它简化了 jQuery 代码库。<br><strong>注意</strong>：使用 on() 方法添加的事件处理程序适用于当前及未来的元素（比如由脚本创建的新元素）。<br><strong>提示</strong>：如需移除事件处理程序，请使用 off() 方法。<br><strong>提示</strong>：如需添加只运行一次的事件然后移除，请使用 one() 方法。</p>
+</blockquote>
+<blockquote>
+<p><em>事件冒泡：在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。</em></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>jquery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux部署项目常用命令</title>
+    <url>/2018/10/19/linux%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="1-解压game-war"><a href="#1-解压game-war" class="headerlink" title="1.解压game.war"></a>1.解压game.war</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jar -xvf game.war</span><br></pre></td></tr></table></figure>
+<h3 id="2-删除文件夹以及文件夹中所有文件，文件夹"><a href="#2-删除文件夹以及文件夹中所有文件，文件夹" class="headerlink" title="2.删除文件夹以及文件夹中所有文件，文件夹"></a>2.删除文件夹以及文件夹中所有文件，文件夹</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /var/log/httpd/test</span><br></pre></td></tr></table></figure>
+<span id="more"></span> 
+<h3 id="3-杀死tomcat进程。"><a href="#3-杀死tomcat进程。" class="headerlink" title="3.杀死tomcat进程。"></a>3.杀死tomcat进程。</h3><h4 id="查看tomcat-进程"><a href="#查看tomcat-进程" class="headerlink" title="查看tomcat 进程"></a>查看tomcat 进程</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ps -ef |grep tomcat</span><br></pre></td></tr></table></figure>
+<h4 id="杀死进程-5144"><a href="#杀死进程-5144" class="headerlink" title="杀死进程 5144"></a>杀死进程 5144</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kill -9 5144</span><br></pre></td></tr></table></figure>
+<h3 id="4-查看日志"><a href="#4-查看日志" class="headerlink" title="4.查看日志"></a>4.查看日志</h3><h4 id="显示文件-example-txt-的后十行内容并在文件内容增加后，自动显示新增的文件内容。"><a href="#显示文件-example-txt-的后十行内容并在文件内容增加后，自动显示新增的文件内容。" class="headerlink" title="显示文件 example.txt 的后十行内容并在文件内容增加后，自动显示新增的文件内容。"></a>显示文件 example.txt 的后十行内容并在文件内容增加后，自动显示新增的文件内容。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tail -f example.txt</span><br></pre></td></tr></table></figure>
+<h3 id="5-将-aaa目录下的所有东西拷到-bbb-下而不拷贝aaa目录本身。"><a href="#5-将-aaa目录下的所有东西拷到-bbb-下而不拷贝aaa目录本身。" class="headerlink" title="5.将 &#x2F;aaa目录下的所有东西拷到&#x2F;bbb&#x2F;下而不拷贝aaa目录本身。"></a>5.将 &#x2F;aaa目录下的所有东西拷到&#x2F;bbb&#x2F;下而不拷贝aaa目录本身。</h3><h4 id="即格式为：cp-Rf-原路径-目的路径"><a href="#即格式为：cp-Rf-原路径-目的路径" class="headerlink" title="即格式为：cp -Rf 原路径&#x2F; 目的路径&#x2F;"></a>即格式为：cp -Rf 原路径&#x2F; 目的路径&#x2F;</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp -Rf /aaa/* /bbb/</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql explain 执行计划</title>
+    <url>/2021/06/17/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p><code>explain select * from t</code><br><img src="/uploads/article/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%921.png"></p>
+<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>select 查询序列号，表示sql语句执行的顺序</p>
+<h2 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h2><ul>
+<li>simple: 表示最简单的select,没有union和子查询</li>
+<li>primary: 最外面的查询或者主查询，在有子查询的语句中，最外面的select查询就是primary</li>
+<li>subquery: 子查询</li>
+<li>union: union语句的第二个或者最后那一个select</li>
+<li>union result:  unino之后的结果</li>
+<li>derived:衍生表</li>
+</ul>
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>所查询的表，简称，或者是中间表</p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><ul>
+<li>const: 表中最多有一个匹配行，const用于比较primary key 或者unique索引快</li>
+<li>eq_ref: 唯一性索引扫描，对于每个来自于前面的表的记录，从该表中读取唯一一行</li>
+<li>ref:   非唯一性索引扫描，对于每个来自于前面的表的记录，所有匹配的行从这张表取出</li>
+<li>index_merge:查询语句中用到了一张表的多个索引时，mysql会将多个索引合并到一起</li>
+<li>range:按指定范围（如 in,&lt;,&gt;,between,and等，但是前提是此字段要建立索引）来检索</li>
+<li>index: 全索引扫描，通常比All快，因为索引文件通常比数据文件小</li>
+<li>all :全表扫描，多数情况下需要优化</li>
+</ul>
+<h2 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h2><p>可能使用到的索引</p>
+<h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>实际使用的索引</p>
+<h2 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h2><p>索引字段的长度</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>列与索引的比较，表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</p>
+<h2 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h2><p>扫描的行数</p>
+<h2 id="filtered"><a href="#filtered" class="headerlink" title="filtered"></a>filtered</h2><p>按表条件过滤的行百分比</p>
+<h2 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h2><ul>
+<li>using index：使用了覆盖索引（Covering Index），即通过索引就能返回结果，无需访问表</li>
+<li>using where：查询使用了where 语句来处理结果</li>
+<li>using join buffer：获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果</li>
+<li>using filesort：这是 order by 语句的结果。这可能是一个CPU密集型的过程。using filesort表示出现了文件内排 序，表示很不好的现象，必须要优化，特别是大表，可以通过选择合适的索引来改进性能，用索引来为查询结果排序</li>
+<li>using temporary：mysql需要创建一张临时表来保存中间结果。 也就是说，需要先把数据放到临时表中，然后从临时 表中获取需要的数据。出现这种临时表，也是必须需要优化的地方，特别是数据量大的情况。两个常见的原因是在来自 不同表的列上使用了distinct，或者使用了不同的 order by 和 group by 列</li>
+</ul>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>sql优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>周星驰电影经典台词</title>
+    <url>/2016/10/20/%E5%91%A8%E6%98%9F%E9%A9%B0%E7%94%B5%E5%BD%B1%E7%BB%8F%E5%85%B8%E5%8F%B0%E8%AF%8D/</url>
+    <content><![CDATA[<h4 id="《国产凌凌漆》"><a href="#《国产凌凌漆》" class="headerlink" title="《国产凌凌漆》"></a>《国产凌凌漆》</h4><ul>
+<li><p>你以为躲起来就找不到你了吗？没有用的！象你这样出色的男人，无论在什么地方，都像漆黑中的萤火虫一样，那样的鲜明，那样的出众。你那忧郁的眼神，稀嘘的胡喳子，神乎其神的刀法，和那杯Dry Martine，都深深地迷住了我。不过，虽然这是这样的出色，但是行有行规，无论怎样你要付清昨晚的过夜费呀，叫女人不用给钱吗？</p>
+</li>
+<li><p>就算是一条底裤，一张厕纸，都有它的用处。</p>
+</li>
+<li><p>古有关云长全神贯注下象棋刮骨疗毒，今有我零零漆聚精会神看A片挖骨取弹头。</p>
+</li>
+</ul>
+<span id="more"></span>
+<h4 id="《破坏之王》"><a href="#《破坏之王》" class="headerlink" title="《破坏之王》"></a>《破坏之王》</h4><ul>
+<li><p>不要误会,我不是针对你,我是说在座的各位都是垃圾.</p>
+</li>
+<li><p>除暴安良是我做市民的责任，积德行善是我的兴趣</p>
+</li>
+</ul>
+<h4 id="《算死草》"><a href="#《算死草》" class="headerlink" title="《算死草》"></a>《算死草》</h4><ul>
+<li>我很孤独用英文怎么讲，I LOVE YOU.</li>
+</ul>
+<h4 id="《喜剧之王》"><a href="#《喜剧之王》" class="headerlink" title="《喜剧之王》"></a>《喜剧之王》</h4><ul>
+<li><p>其实我是一个演员</p>
+</li>
+<li><p>看，前面漆黑一片，什么都看不到。”-“也不是，天亮以后便会很美的。”</p>
+</li>
+</ul>
+<h4 id="《唐伯虎点秋香》"><a href="#《唐伯虎点秋香》" class="headerlink" title="《唐伯虎点秋香》"></a>《唐伯虎点秋香》</h4><ul>
+<li>秉夫人，小人本住在，苏州的城边，家中有屋又有田，生活乐无边，谁知那唐伯虎，他蛮横不留情，勾结官府目无天，占我大屋夺我田，我爷爷跟他来翻脸，反被他一棍来打扁，我奶奶骂他欺善民，反被他捉进了唐府，强奸了一百遍，一百遍。最后她悬梁自尽遗恨人间。他还将我父子，逐出了家园，流浪到江边。我为求养老爹，惟有独自行乞在庙前，谁知那唐伯虎，他实在太阴险，知道此情形，竟派人来暗算，将我父子狂殴在市前，小人身壮健，残命得留全，可怜老父他魂归天，此恨更难添。我为求葬老爹，惟有卖身为奴自作贱，一边勤赚钱，一边读书篇，发誓把功名显，手刃仇人意志坚，从此唐寅诗集伴身边，我牢记此仇不共戴天。。。</li>
+</ul>
+<h4 id="《少林足球》"><a href="#《少林足球》" class="headerlink" title="《少林足球》"></a>《少林足球》</h4><ul>
+<li><p>做人如果没有理想，那跟咸鱼有什么区别？</p>
+</li>
+<li><p>球不是这么踢滴。</p>
+</li>
+<li><p>我觉得我现在很漂亮，我也很喜欢我现在这个样子，你要是不喜欢看，你可以走开。</p>
+</li>
+<li><p>我一秒钟几十万上下，我会和你们去吃杂碎面？</p>
+</li>
+</ul>
+<h4 id="《大话西游》"><a href="#《大话西游》" class="headerlink" title="《大话西游》"></a>《大话西游》</h4><ul>
+<li><p>曾经有一段真挚的感情摆在我面前我没有珍惜，等到失去时才后悔莫及。人生最悲哀的事情莫过于此。如果上天能再给我一次重来的机会，我会对那个女孩说三个字：我爱你。如果要在这段感情前加个期限，我希望是一万年！</p>
+</li>
+<li><p>爱一个人需要理由吗？不需要吗？需要吗？</p>
+</li>
+</ul>
+<h4 id="《功夫》"><a href="#《功夫》" class="headerlink" title="《功夫》"></a>《功夫》</h4><ul>
+<li>本来我是想拿那些钱，当个律师，或者是医生，但是一想到要拯救世界和平，哎。。。</li>
+</ul>
+<h4 id="《长江七号》"><a href="#《长江七号》" class="headerlink" title="《长江七号》"></a>《长江七号》</h4><ul>
+<li>我们虽然穷但不乱说脏话，我们不去偷，我们不去抢，不属于自己的东西，我们不会拿。</li>
+</ul>
+<h4 id="《行运一条龙》"><a href="#《行运一条龙》" class="headerlink" title="《行运一条龙》"></a>《行运一条龙》</h4><ul>
+<li>我告诉你，泡妞的方法只有两个字—英俊</li>
+</ul>
+]]></content>
+      <categories>
+        <category>电影</category>
+      </categories>
+      <tags>
+        <tag>周星驰</tag>
+        <tag>台词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>尾递归</title>
+    <url>/2017/05/10/%E5%B0%BE%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在数学与计算机科学中，是指在函数的定义中使用函数自身的方法。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//计算num+(num-1)+(num-2)+...</span><br><span class="line">public int decrease(int num)</span><br><span class="line">&#123;</span><br><span class="line">    if (num == 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return decrease(num - 1) + num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>如果num比较小，代码是没有问题，但是如果num比较大递归比较深的话，就会栈溢出：java.lang.StackOverflowError<br>原因是因为decrease函数调用自身，然后再加上num，此时的需要等待decrease调用完成才能完成加法，也就是必须等到最后一个计算完，才能一个一个的返回，因此需要递归到最后一个函数完成时才能一个一个释放函数，所以当递归比较深的话，就会栈溢出。</p>
+<h2 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h2><p>尾递归是在函数最后调用自身，每次调用完成后执行下次调用，不用存储函数状态，所以也不会有栈溢出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static int decrease(int num, int total)</span><br><span class="line">&#123;</span><br><span class="line">    if (num == 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return decrease(num-1,total + num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速排序</title>
+    <url>/2017/02/17/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n)算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>1.选定一个合适的值（理想情况中值最好，但实现中一般使用数组第一个值）,称为“枢轴”(pivot)。<br>2.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。<br>3.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
+<span id="more"></span>
+<h2 id="java实现"><a href="#java实现" class="headerlink" title="java实现"></a>java实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">//原地分区实现</span><br><span class="line">private static int partition(int[] arr, int low, int high)</span><br><span class="line">&#123;</span><br><span class="line">    int pivot = arr[low];//以第一个值为pivot</span><br><span class="line">    while (low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        while (low &lt; high &amp;&amp; arr[high] &gt;= pivot)</span><br><span class="line">        &#123;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[low] = arr[high];</span><br><span class="line">        while (low &lt; high &amp;&amp; arr[low] &lt;= pivot)</span><br><span class="line">        &#123;</span><br><span class="line">            low++;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[high] = arr[low];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[low] = pivot;</span><br><span class="line">    return low;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void sort(int[] arr, int low, int high)</span><br><span class="line">  &#123;</span><br><span class="line">      if (low &gt;= high)</span><br><span class="line">      &#123;</span><br><span class="line">          return;</span><br><span class="line">      &#125;</span><br><span class="line">      int pivotIndex = partition(arr, low, high);</span><br><span class="line">      sort(arr, low, pivotIndex - 1);</span><br><span class="line">      sort(arr, pivotIndex + 1, high);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">  int[] arr = &#123;7, 4, 3, 8, 1, 2, 5, 6&#125;;</span><br><span class="line"></span><br><span class="line">  sort(arr, 0, arr.length - 1);</span><br><span class="line">  for (int i : arr)</span><br><span class="line">  &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>晴天</title>
+    <url>/2016/10/19/%E6%99%B4%E5%A4%A9/</url>
+    <content><![CDATA[<div align="center">**歌手：周杰伦**
+**所属专辑：叶惠美**
+
+
+<p>故事的小黄花<br>从出生那年就飘着<br>童年的荡秋千<br>随记忆一直晃到现在<br>rui sou sou xi dou xi la<br>sou la xi xi xi xi la xi la sou<br>吹着前奏望着天空<br>我想起花瓣试着掉落<br>为你翘课的那一天</p>
+<span id="more"></span>
+
+<p>花落的那一天<br>教室的那一间<br>我怎么看不见<br>消失的下雨天<br>我好想再淋一遍<br>没想到失去的勇气我还留着<br>好想再问一遍<br>你会等待还是离开<br>刮风这天我试过握着你手<br>但偏偏雨渐渐大到我看你不见<br>还要多久我才能在你身边<br>等到放晴的那天也许我会比较好一点<br>从前从前有个人爱你很久<br>但偏偏风渐渐把距离吹得好远<br>好不容易又能再多爱一天<br>但故事的最后你好像还是说了拜拜</p>
+<p>为你翘课的那一天<br>花落的那一天<br>教室的那一间<br>我怎么看不见<br>消失的下雨天<br>我好想再淋一遍<br>没想到失去的勇气我还留着<br>好想再问一遍<br>你会等待还是离开<br>刮风这天我试过握着你手<br>但偏偏雨渐渐大到我看你不见<br>还要多久我才能在你身边<br>等到放晴的那天也许我会比较好一点<br>从前从前有个人爱你很久<br>偏偏风渐渐把距离吹得好远<br>好不容易又能再多爱一天<br>但故事的最后你好像还是说了拜拜<br>刮风这天我试过握着你手<br>但偏偏雨渐渐大到我看你不见<br>还要多久我才能够在你身边<br>等到放晴那天也许我会比较好一点<br>从前从前有个人爱你很久<br>但偏偏雨渐渐把距离吹得好远<br>好不容易又能再多爱一天<br>但故事的最后你好像还是说了吧</div></p>
+]]></content>
+      <categories>
+        <category>歌曲</category>
+      </categories>
+      <tags>
+        <tag>周杰伦</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>maven 多环境打包</title>
+    <url>/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/</url>
+    <content><![CDATA[<h3 id="1-在项目的pom中添加"><a href="#1-在项目的pom中添加" class="headerlink" title="1.在项目的pom中添加"></a>1.在项目的pom中添加</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;resources&gt;</span><br><span class="line">        &lt;!-- Resource Filter --&gt;</span><br><span class="line">        &lt;resource&gt;</span><br><span class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</span><br><span class="line">            &lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">        &lt;/resource&gt;</span><br><span class="line">    &lt;/resources&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">    &lt;profiles&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">        &lt;!--开发环境 --&gt;</span><br><span class="line">            &lt;id&gt;dev&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">                &lt;-- 可以指定jdk的版本--&gt;</span><br><span class="line">                &lt;jdk&gt;1.6&lt;/jdk&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;localhost&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;dev&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">            &lt;id&gt;test&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;test.host&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;test&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">    &lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="2-在上边的resource节点指定的路径创建config-properties"><a href="#2-在上边的resource节点指定的路径创建config-properties" class="headerlink" title="2.在上边的resource节点指定的路径创建config.properties"></a>2.在上边的resource节点指定的路径创建config.properties</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://$&#123;maven.jdbc.host&#125;:$&#123;maven.jdbc.port&#125;/$&#123;maven.jdbc.db&#125;</span><br><span class="line">jdbc.username=$&#123;maven.jdbc.username&#125;</span><br><span class="line">jdbc.password=$&#123;maven.jdbc.password&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-运行命令-编译项目，环境指定为dev"><a href="#3-运行命令-编译项目，环境指定为dev" class="headerlink" title="3.运行命令 编译项目，环境指定为dev"></a>3.运行命令 编译项目，环境指定为dev</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn compile -P dev</span><br></pre></td></tr></table></figure>
+
+<p>然后打开编译后的config.properties    如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/dev</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
+<p>已经把值赋进去了。<br>同样用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn compile -P test</span><br></pre></td></tr></table></figure>
+<p>然后打开编译后的config.properties    如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://test.host:3306/test</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
+<h3 id="4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包"><a href="#4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包" class="headerlink" title="4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包"></a>4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包</h3><p><img src="/uploads/article/201610201.png" alt="idea"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+</search>
