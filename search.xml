@@ -65,6 +65,58 @@
       </tags>
   </entry>
   <entry>
+    <title>Intellij IDEA Lambda提示 Can be replaced with method reference</title>
+    <url>/2016/11/10/Intellij-IDEA-Lambda%E6%8F%90%E7%A4%BA-Can-be-replaced-with-method-reference/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在IDEA中使用lambda表达式有时会有这样的提示：Can be replaced with method reference…<br><img src="/uploads/article/IntellijIDEALambda20161110151454.png" alt="提示"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>出现这种提示一般可以将表达式改为用<code>::</code>关键字</p>
+<table>
+<thead>
+<tr>
+<th>方法引用</th>
+<th align="center">等价的lambda表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String::valueOf</code></td>
+<td align="center"><code>x -&gt; String.valueOf(x)</code></td>
+</tr>
+<tr>
+<td><code>Object::toString</code></td>
+<td align="center"><code>x -&gt; x.toString()</code></td>
+</tr>
+<tr>
+<td><code>x::toString</code></td>
+<td align="center"><code>() -&gt; x.toString()</code></td>
+</tr>
+<tr>
+<td><code>ArrayList::new</code></td>
+<td align="center"><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>静态方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().forEach(s -&gt; System.out.println(s));//System.out.println(s)会有提示</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>如果调用有一个参数的普通方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;Tag&gt; tagList = Arrays.asList(new Tag(&quot;map&quot;),new Tag(&quot;java8&quot;),new Tag(&quot;filter&quot;));</span><br><span class="line">tagList.stream().map(tag -&gt; tag.getName());//tag.getName()会有提示</span><br></pre></td></tr></table></figure>
+<p>可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tagList.stream().map(Tag::getName);</span><br></pre></td></tr></table></figure>
+<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h4><p>还有两个参数的普通方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().sorted((o1, o2) -&gt; o1.compareTo(o2));//o1.compareTo(o2)会有提示</span><br></pre></td></tr></table></figure>
+<p>可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted(String::compareTo);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>Lambda</tag>
+        <tag>Java8</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IntelliJ IDEA快捷键</title>
     <url>/2016/10/28/IntelliJ-IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<h5 id="Search-Replace"><a href="#Search-Replace" class="headerlink" title="Search&#x2F;Replace"></a>Search&#x2F;Replace</h5><table>
@@ -694,58 +746,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Intellij IDEA Lambda提示 Can be replaced with method reference</title>
-    <url>/2016/11/10/Intellij-IDEA-Lambda%E6%8F%90%E7%A4%BA-Can-be-replaced-with-method-reference/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在IDEA中使用lambda表达式有时会有这样的提示：Can be replaced with method reference…<br><img src="/uploads/article/IntellijIDEALambda20161110151454.png" alt="提示"></p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>出现这种提示一般可以将表达式改为用<code>::</code>关键字</p>
-<table>
-<thead>
-<tr>
-<th>方法引用</th>
-<th align="center">等价的lambda表达式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>String::valueOf</code></td>
-<td align="center"><code>x -&gt; String.valueOf(x)</code></td>
-</tr>
-<tr>
-<td><code>Object::toString</code></td>
-<td align="center"><code>x -&gt; x.toString()</code></td>
-</tr>
-<tr>
-<td><code>x::toString</code></td>
-<td align="center"><code>() -&gt; x.toString()</code></td>
-</tr>
-<tr>
-<td><code>ArrayList::new</code></td>
-<td align="center"><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
-</tr>
-</tbody></table>
-<span id="more"></span>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>静态方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().forEach(s -&gt; System.out.println(s));//System.out.println(s)会有提示</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>如果调用有一个参数的普通方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;Tag&gt; tagList = Arrays.asList(new Tag(&quot;map&quot;),new Tag(&quot;java8&quot;),new Tag(&quot;filter&quot;));</span><br><span class="line">tagList.stream().map(tag -&gt; tag.getName());//tag.getName()会有提示</span><br></pre></td></tr></table></figure>
-<p>可以替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tagList.stream().map(Tag::getName);</span><br></pre></td></tr></table></figure>
-<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h4><p>还有两个参数的普通方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().sorted((o1, o2) -&gt; o1.compareTo(o2));//o1.compareTo(o2)会有提示</span><br></pre></td></tr></table></figure>
-<p>可以替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted(String::compareTo);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-      <tags>
-        <tag>IDEA</tag>
-        <tag>Lambda</tag>
-        <tag>Java8</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL 数据库性能优化之SQL优化</title>
     <url>/2016/10/24/MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BSQL%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<h4 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h4><ol>
@@ -973,47 +973,26 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql explain 执行计划</title>
-    <url>/2021/06/17/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p><code>explain select * from t</code><br><img src="/uploads/article/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%921.png"></p>
-<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>select 查询序列号，表示sql语句执行的顺序</p>
-<h2 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h2><ul>
-<li>simple: 表示最简单的select,没有union和子查询</li>
-<li>primary: 最外面的查询或者主查询，在有子查询的语句中，最外面的select查询就是primary</li>
-<li>subquery: 子查询</li>
-<li>union: union语句的第二个或者最后那一个select</li>
-<li>union result:  unino之后的结果</li>
-<li>derived:衍生表</li>
-</ul>
-<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>所查询的表，简称，或者是中间表</p>
-<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><ul>
-<li>const: 表中最多有一个匹配行，const用于比较primary key 或者unique索引快</li>
-<li>eq_ref: 唯一性索引扫描，对于每个来自于前面的表的记录，从该表中读取唯一一行</li>
-<li>ref:   非唯一性索引扫描，对于每个来自于前面的表的记录，所有匹配的行从这张表取出</li>
-<li>index_merge:查询语句中用到了一张表的多个索引时，mysql会将多个索引合并到一起</li>
-<li>range:按指定范围（如 in,&lt;,&gt;,between,and等，但是前提是此字段要建立索引）来检索</li>
-<li>index: 全索引扫描，通常比All快，因为索引文件通常比数据文件小</li>
-<li>all :全表扫描，多数情况下需要优化</li>
-</ul>
-<h2 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h2><p>可能使用到的索引</p>
-<h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>实际使用的索引</p>
-<h2 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h2><p>索引字段的长度</p>
-<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>列与索引的比较，表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</p>
-<h2 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h2><p>扫描的行数</p>
-<h2 id="filtered"><a href="#filtered" class="headerlink" title="filtered"></a>filtered</h2><p>按表条件过滤的行百分比</p>
-<h2 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h2><ul>
-<li>using index：使用了覆盖索引（Covering Index），即通过索引就能返回结果，无需访问表</li>
-<li>using where：查询使用了where 语句来处理结果</li>
-<li>using join buffer：获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果</li>
-<li>using filesort：这是 order by 语句的结果。这可能是一个CPU密集型的过程。using filesort表示出现了文件内排 序，表示很不好的现象，必须要优化，特别是大表，可以通过选择合适的索引来改进性能，用索引来为查询结果排序</li>
-<li>using temporary：mysql需要创建一张临时表来保存中间结果。 也就是说，需要先把数据放到临时表中，然后从临时 表中获取需要的数据。出现这种临时表，也是必须需要优化的地方，特别是数据量大的情况。两个常见的原因是在来自 不同表的列上使用了distinct，或者使用了不同的 order by 和 group by 列</li>
-</ul>
+    <title>maven 多环境打包</title>
+    <url>/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/</url>
+    <content><![CDATA[<h3 id="1-在项目的pom中添加"><a href="#1-在项目的pom中添加" class="headerlink" title="1.在项目的pom中添加"></a>1.在项目的pom中添加</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;resources&gt;</span><br><span class="line">        &lt;!-- Resource Filter --&gt;</span><br><span class="line">        &lt;resource&gt;</span><br><span class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</span><br><span class="line">            &lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">        &lt;/resource&gt;</span><br><span class="line">    &lt;/resources&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">    &lt;profiles&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">        &lt;!--开发环境 --&gt;</span><br><span class="line">            &lt;id&gt;dev&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">                &lt;-- 可以指定jdk的版本--&gt;</span><br><span class="line">                &lt;jdk&gt;1.6&lt;/jdk&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;localhost&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;dev&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">            &lt;id&gt;test&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;test.host&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;test&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">    &lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="2-在上边的resource节点指定的路径创建config-properties"><a href="#2-在上边的resource节点指定的路径创建config-properties" class="headerlink" title="2.在上边的resource节点指定的路径创建config.properties"></a>2.在上边的resource节点指定的路径创建config.properties</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://$&#123;maven.jdbc.host&#125;:$&#123;maven.jdbc.port&#125;/$&#123;maven.jdbc.db&#125;</span><br><span class="line">jdbc.username=$&#123;maven.jdbc.username&#125;</span><br><span class="line">jdbc.password=$&#123;maven.jdbc.password&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-运行命令-编译项目，环境指定为dev"><a href="#3-运行命令-编译项目，环境指定为dev" class="headerlink" title="3.运行命令 编译项目，环境指定为dev"></a>3.运行命令 编译项目，环境指定为dev</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn compile -P dev</span><br></pre></td></tr></table></figure>
+
+<p>然后打开编译后的config.properties    如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/dev</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
+<p>已经把值赋进去了。<br>同样用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn compile -P test</span><br></pre></td></tr></table></figure>
+<p>然后打开编译后的config.properties    如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://test.host:3306/test</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
+<h3 id="4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包"><a href="#4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包" class="headerlink" title="4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包"></a>4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包</h3><p><img src="/uploads/article/201610201.png" alt="idea"></p>
 ]]></content>
       <categories>
-        <category>mysql</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>sql优化</tag>
+        <tag>maven</tag>
       </tags>
   </entry>
   <entry>
@@ -1081,6 +1060,50 @@
       </tags>
   </entry>
   <entry>
+    <title>mysql explain 执行计划</title>
+    <url>/2021/06/17/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p><code>explain select * from t</code><br><img src="/uploads/article/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%921.png"></p>
+<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>select 查询序列号，表示sql语句执行的顺序</p>
+<h2 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h2><ul>
+<li>simple: 表示最简单的select,没有union和子查询</li>
+<li>primary: 最外面的查询或者主查询，在有子查询的语句中，最外面的select查询就是primary</li>
+<li>subquery: 子查询</li>
+<li>union: union语句的第二个或者最后那一个select</li>
+<li>union result:  unino之后的结果</li>
+<li>derived:衍生表</li>
+</ul>
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>所查询的表，简称，或者是中间表</p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><ul>
+<li>const: 表中最多有一个匹配行，const用于比较primary key 或者unique索引快</li>
+<li>eq_ref: 唯一性索引扫描，对于每个来自于前面的表的记录，从该表中读取唯一一行</li>
+<li>ref:   非唯一性索引扫描，对于每个来自于前面的表的记录，所有匹配的行从这张表取出</li>
+<li>index_merge:查询语句中用到了一张表的多个索引时，mysql会将多个索引合并到一起</li>
+<li>range:按指定范围（如 in,&lt;,&gt;,between,and等，但是前提是此字段要建立索引）来检索</li>
+<li>index: 全索引扫描，通常比All快，因为索引文件通常比数据文件小</li>
+<li>all :全表扫描，多数情况下需要优化</li>
+</ul>
+<h2 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h2><p>可能使用到的索引</p>
+<h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>实际使用的索引</p>
+<h2 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h2><p>索引字段的长度</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>列与索引的比较，表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</p>
+<h2 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h2><p>扫描的行数</p>
+<h2 id="filtered"><a href="#filtered" class="headerlink" title="filtered"></a>filtered</h2><p>按表条件过滤的行百分比</p>
+<h2 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h2><ul>
+<li>using index：使用了覆盖索引（Covering Index），即通过索引就能返回结果，无需访问表</li>
+<li>using where：查询使用了where 语句来处理结果</li>
+<li>using join buffer：获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果</li>
+<li>using filesort：这是 order by 语句的结果。这可能是一个CPU密集型的过程。using filesort表示出现了文件内排 序，表示很不好的现象，必须要优化，特别是大表，可以通过选择合适的索引来改进性能，用索引来为查询结果排序</li>
+<li>using temporary：mysql需要创建一张临时表来保存中间结果。 也就是说，需要先把数据放到临时表中，然后从临时 表中获取需要的数据。出现这种临时表，也是必须需要优化的地方，特别是数据量大的情况。两个常见的原因是在来自 不同表的列上使用了distinct，或者使用了不同的 order by 和 group by 列</li>
+</ul>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>sql优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>尾递归</title>
     <url>/2017/05/10/%E5%B0%BE%E9%80%92%E5%BD%92/</url>
     <content><![CDATA[<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在数学与计算机科学中，是指在函数的定义中使用函数自身的方法。<br>例如：</p>
@@ -1133,29 +1156,6 @@
       </categories>
       <tags>
         <tag>周杰伦</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>maven 多环境打包</title>
-    <url>/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/</url>
-    <content><![CDATA[<h3 id="1-在项目的pom中添加"><a href="#1-在项目的pom中添加" class="headerlink" title="1.在项目的pom中添加"></a>1.在项目的pom中添加</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;resources&gt;</span><br><span class="line">        &lt;!-- Resource Filter --&gt;</span><br><span class="line">        &lt;resource&gt;</span><br><span class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</span><br><span class="line">            &lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">        &lt;/resource&gt;</span><br><span class="line">    &lt;/resources&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">    &lt;profiles&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">        &lt;!--开发环境 --&gt;</span><br><span class="line">            &lt;id&gt;dev&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">                &lt;-- 可以指定jdk的版本--&gt;</span><br><span class="line">                &lt;jdk&gt;1.6&lt;/jdk&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;localhost&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;dev&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">            &lt;id&gt;test&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;test.host&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;test&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">    &lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h3 id="2-在上边的resource节点指定的路径创建config-properties"><a href="#2-在上边的resource节点指定的路径创建config-properties" class="headerlink" title="2.在上边的resource节点指定的路径创建config.properties"></a>2.在上边的resource节点指定的路径创建config.properties</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://$&#123;maven.jdbc.host&#125;:$&#123;maven.jdbc.port&#125;/$&#123;maven.jdbc.db&#125;</span><br><span class="line">jdbc.username=$&#123;maven.jdbc.username&#125;</span><br><span class="line">jdbc.password=$&#123;maven.jdbc.password&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-运行命令-编译项目，环境指定为dev"><a href="#3-运行命令-编译项目，环境指定为dev" class="headerlink" title="3.运行命令 编译项目，环境指定为dev"></a>3.运行命令 编译项目，环境指定为dev</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn compile -P dev</span><br></pre></td></tr></table></figure>
-
-<p>然后打开编译后的config.properties    如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/dev</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
-<p>已经把值赋进去了。<br>同样用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn compile -P test</span><br></pre></td></tr></table></figure>
-<p>然后打开编译后的config.properties    如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://test.host:3306/test</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
-<h3 id="4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包"><a href="#4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包" class="headerlink" title="4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包"></a>4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包</h3><p><img src="/uploads/article/201610201.png" alt="idea"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>maven</tag>
       </tags>
   </entry>
 </search>
