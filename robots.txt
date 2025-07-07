@@ -11,5 +11,5 @@ Allow: /search
 Allow: /search/index.html
 Allow: /index.html
 Allow: /search.xml
-Sitemap: http://doublekill.me/sitemap.xml
-Sitemap: http://doublekill.me/baidusitemap.xml
+Sitemap: https://lonvelym.github.io/sitemap.xml
+Sitemap: https://lonvelym.github.io/baidusitemap.xml
