@@ -763,9 +763,15 @@
 </ol>
 <p>很多人为了统计记录条数，就使用 count(1) 和 count(primary_key) 而不是 count(<em>) ，他们认为这样性能更好，其实这是一个误区。对于有些场景，这样做可能性能会更差，应为数据库对 count(</em>) 计数操作做了一些特别的优化。<br>2. #####  count(column) 和 count(<em>) 是一样的<br>这个误区甚至在很多的资深工程师或者是 DBA 中都普遍存在，很多人都会认为这是理所当然的。实际上，count(column) 和 count(</em>) 是一个完全不一样的操作，所代表的意义也完全不一样。<br>count(column) 是表示结果集中有多少个column字段不为空的记录<br>count(<em>) 是表示整个结果集有多少条记录<br>3. ##### select a,b from … 比 select a,b,c from … 可以让数据库访问更少的数据量<br>这个误区主要存在于大量的开发人员中，主要原因是对数据库的存储原理不是太了解。<br>实际上，大多数关系型数据库都是按照行（row）的方式存储，而数据存取操作都是以一个固定大小的IO单元（被称作 block 或者 page）为单位，一般为4KB，8KB… 大多数时候，每个IO单元中存储了多行，每行都是存储了该行的所有字段（lob等特殊类型字段除外）。<br>所以，我们是取一个字段还是多个字段，实际上数据库在表中需要访问的数据量其实是一样的。<br>当然，也有例外情况，那就是我们的这个查询在索引中就可以完成，也就是说当只取 a,b两个字段的时候，不需要回表，而c这个字段不在使用的索引中，需要回表取得其数据。在这样的情况下，二者的IO量会有较大差异。<br>4. ##### order by 一定需要排序操作<br>我们知道索引数据实际上是有序的，如果我们的需要的数据和某个索引的顺序一致，而且我们的查询又通过这个索引来执行，那么数据库一般会省略排序操作，而直接将数据返回，因为数据库知道数据已经满足我们的排序需求了。<br>实际上，利用索引来优化有排序需求的 SQL，是一个非常重要的优化手段<br>延伸阅读：MySQL ORDER BY 的实现分析 ，MySQL 中 GROUP BY 基本实现原理 以及 MySQL DISTINCT 的基本实现原理 这3篇文章中有更为深入的分析，尤其是第一篇<br>5. ##### 执行计划中有 filesort 就会进行磁盘文件排序</em>*<br>有这个误区其实并不能怪我们，而是因为 MySQL 开发者在用词方面的问题。filesort 是我们在使用 explain 命令查看一条 SQL 的执行计划的时候可能会看到在 “Extra” 一列显示的信息。<br>实际上，只要一条 SQL 语句需要进行排序操作，都会显示“Using filesort”，这并不表示就会有文件排序操作。<br>延伸阅读：理解 MySQL Explain 命令输出中的filesort，我在这里有更为详细的介绍</p>
 <h4 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h4><ol>
-<li><h5 id="尽量少-join"><a href="#尽量少-join" class="headerlink" title="尽量少 join"></a>尽量少 join</h5></li>
+<li><h5 id="1-尽量少-join"><a href="#1-尽量少-join" class="headerlink" title="1. 尽量少 join"></a>1. 尽量少 join</h5></li>
 </ol>
-<p>MySQL 的优势在于简单，但这在某些方面其实也是其劣势。MySQL 优化器效率高，但是由于其统计信息的量有限，优化器工作过程出现偏差的可能性也就更多。对于复杂的多表 Join，一方面由于其优化器受限，再者在 Join 这方面所下的功夫还不够，所以性能表现离 Oracle 等关系型数据库前辈还是有一定距离。但如果是简单的单表查询，这一差距就会极小甚至在有些场景下要优于这些数据库前辈。<br>2. ##### 尽量少排序<br>排序操作会消耗较多的 CPU 资源，所以减少排序可以在缓存命中率高等 IO 能力足够的场景下会较大影响 SQL 的响应时间。<br>对于MySQL来说，减少排序有多种办法，比如：<br>上面误区中提到的通过利用索引来排序的方式进行优化<br>减少参与排序的记录条数<br>非必要不对数据进行排序<br>…<br>3. ##### 尽量避免 select *<br>很多人看到这一点后觉得比较难理解，上面不是在误区中刚刚说 select 子句中字段的多少并不会影响到读取的数据吗？<br>是的，大多数时候并不会影响到 IO 量，但是当我们还存在 order by 操作的时候，select 子句中的字段多少会在很大程度上影响到我们的排序效率，这一点可以通过我之前一篇介绍 MySQL ORDER BY 的实现分析 的文章中有较为详细的介绍。<br>此外，上面误区中不是也说了，只是大多数时候是不会影响到 IO 量，当我们的查询结果仅仅只需要在索引中就能找到的时候，还是会极大减少 IO 量的。<br>4. ##### 尽量用 join 代替子查询<br>虽然 Join 性能并不佳，但是和 MySQL 的子查询比起来还是有非常大的性能优势。MySQL 的子查询执行计划一直存在较大的问题，虽然这个问题已经存在多年，但是到目前已经发布的所有稳定版本中都普遍存在，一直没有太大改善。虽然官方也在很早就承认这一问题，并且承诺尽快解决，但是至少到目前为止我们还没有看到哪一个版本较好的解决了这一问题。<br>5. #####  尽量少 or **<br>当 where 子句中存在多个条件以“或”并存的时候，MySQL 的优化器并没有很好的解决其执行计划优化问题，再加上 MySQL 特有的 SQL 与 Storage 分层架构方式，造成了其性能比较低下，很多时候使用 union all 或者是union（必要的时候）的方式来代替“or”会得到更好的效果。<br>6. ##### 尽量用 union all 代替 union<br>union 和 union all 的差异主要是前者需要将两个（或者多个）结果集合并后再进行唯一性过滤操作，这就会涉及到排序，增加大量的 CPU 运算，加大资源消耗及延迟。所以当我们可以确认不可能出现重复结果集或者不在乎重复结果集的时候，尽量使用 union all 而不是 union。<br>7. ##### 尽量早过滤<br>这一优化策略其实最常见于索引的优化设计中（将过滤性更好的字段放得更靠前）。<br>在 SQL 编写中同样可以使用这一原则来优化一些 Join 的 SQL。比如我们在多个表进行分页数据查询的时候，我们最好是能够在一个表上先过滤好数据分好页，然后再用分好页的结果集与另外的表 Join，这样可以尽可能多的减少不必要的 IO 操作，大大节省 IO 操作所消耗的时间。<br>8. ##### 避免类型转换<br>这里所说的“类型转换”是指 where 子句中出现 column 字段的类型和传入的参数类型不一致的时候发生的类型转换：</p>
+<p>MySQL 的优势在于简单，但这在某些方面其实也是其劣势。MySQL 优化器效率高，但是由于其统计信息的量有限，优化器工作过程出现偏差的可能性也就更多。对于复杂的多表 Join，一方面由于其优化器受限，再者在 Join 这方面所下的功夫还不够，所以性能表现离 Oracle 等关系型数据库前辈还是有一定距离。但如果是简单的单表查询，这一差距就会极小甚至在有些场景下要优于这些数据库前辈。<br>2. ##### 尽量少排序<br>排序操作会消耗较多的 CPU 资源，所以减少排序可以在缓存命中率高等 IO 能力足够的场景下会较大影响 SQL 的响应时间。<br>对于MySQL来说，减少排序有多种办法，比如：—<br>title: MySQL 数据库性能优化之SQL优化<br>date: 2016-10-24 10:55:49<br>tags: [sql,性能]<br>categories: mysql</p>
+<h2 id="keywords-MySQL-数据库性能优化之SQL优化"><a href="#keywords-MySQL-数据库性能优化之SQL优化" class="headerlink" title="keywords: MySQL 数据库性能优化之SQL优化"></a>keywords: MySQL 数据库性能优化之SQL优化</h2><h5 id="1-减少-IO-次数"><a href="#1-减少-IO-次数" class="headerlink" title="1.减少 IO 次数"></a>1.减少 IO 次数</h5><p>IO永远是数据库最容易瓶颈的地方，这是由数据库的职责所决定的，大部分数据库操作中超过90%的时间都是 IO 操作所占用的，减少 IO 次数是 SQL 优化中需要第一优先考虑，当然，也是收效最明显的优化手段。</p>
+<h5 id="2-降低-CPU-计算"><a href="#2-降低-CPU-计算" class="headerlink" title="2.降低 CPU 计算"></a>2.降低 CPU 计算</h5><p>除了 IO 瓶颈之外，SQL优化中需要考虑的就是 CPU 运算量的优化了。order by, group by,distinct … 都是消耗 CPU 的大户（这些操作基本上都是 CPU 处理内存中的数据比较运算）。当我们的 IO 优化做到一定阶段之后，降低 CPU 计算也就成为了我们 SQL 优化的重要目标</p>
+<!-- more -->
+
+<h5 id="1-改变-SQL-执行计划"><a href="#1-改变-SQL-执行计划" class="headerlink" title="1.改变 SQL 执行计划"></a>1.改变 SQL 执行计划</h5><p>明确了优化目标之后，我们需要确定达到我们目标的方法。对于 SQL 语句来说，达到上述2个目标的方法其实只有一个，那就是改变 SQL 的执行计划，让他尽量“少走弯路”，尽量通过各种“捷径”来找到我们需要的数据，以达到 “减少 IO 次数” 和 “降低 CPU 计算” 的目标</p>
+<h5 id="1-count-1-和count-primary-key-优于-count"><a href="#1-count-1-和count-primary-key-优于-count" class="headerlink" title="1.count(1)和count(primary_key) 优于 count(*)"></a>1.count(1)和count(primary_key) 优于 count(*)</h5><p>很多人为了统计记录条数，就使用 count(1) 和 count(primary_key) 而不是 count(<em>) ，他们认为这样性能更好，其实这是一个误区。对于有些场景，这样做可能性能会更差，应为数据库对 count(</em>) 计数操作做了一些特别的优化。<br>上面误区中提到的通过利用索引来排序的方式进行优化<br>减少参与排序的记录条数<br>非必要不对数据进行排序<br>…<br>3. ##### 尽量避免 select *<br>很多人看到这一点后觉得比较难理解，上面不是在误区中刚刚说 select 子句中字段的多少并不会影响到读取的数据吗？<br>是的，大多数时候并不会影响到 IO 量，但是当我们还存在 order by 操作的时候，select 子句中的字段多少会在很大程度上影响到我们的排序效率，这一点可以通过我之前一篇介绍 MySQL ORDER BY 的实现分析 的文章中有较为详细的介绍。<br>此外，上面误区中不是也说了，只是大多数时候是不会影响到 IO 量，当我们的查询结果仅仅只需要在索引中就能找到的时候，还是会极大减少 IO 量的。<br>4. ##### 尽量用 join 代替子查询<br>虽然 Join 性能并不佳，但是和 MySQL 的子查询比起来还是有非常大的性能优势。MySQL 的子查询执行计划一直存在较大的问题，虽然这个问题已经存在多年，但是到目前已经发布的所有稳定版本中都普遍存在，一直没有太大改善。虽然官方也在很早就承认这一问题，并且承诺尽快解决，但是至少到目前为止我们还没有看到哪一个版本较好的解决了这一问题。<br>5. #####  尽量少 or **<br>当 where 子句中存在多个条件以“或”并存的时候，MySQL 的优化器并没有很好的解决其执行计划优化问题，再加上 MySQL 特有的 SQL 与 Storage 分层架构方式，造成了其性能比较低下，很多时候使用 union all 或者是union（必要的时候）的方式来代替“or”会得到更好的效果。<br>6. ##### 尽量用 union all 代替 union<br>union 和 union all 的差异主要是前者需要将两个（或者多个）结果集合并后再进行唯一性过滤操作，这就会涉及到排序，增加大量的 CPU 运算，加大资源消耗及延迟。所以当我们可以确认不可能出现重复结果集或者不在乎重复结果集的时候，尽量使用 union all 而不是 union。<br>7. ##### 尽量早过滤<br>这一优化策略其实最常见于索引的优化设计中（将过滤性更好的字段放得更靠前）。<br>在 SQL 编写中同样可以使用这一原则来优化一些 Join 的 SQL。比如我们在多个表进行分页数据查询的时候，我们最好是能够在一个表上先过滤好数据分好页，然后再用分好页的结果集与另外的表 Join，这样可以尽可能多的减少不必要的 IO 操作，大大节省 IO 操作所消耗的时间。<br>8. ##### 避免类型转换<br>这里所说的“类型转换”是指 where 子句中出现 column 字段的类型和传入的参数类型不一致的时候发生的类型转换：</p>
 <ul>
 <li>人为在column_name 上通过转换函数进行转换<br>直接导致 MySQL（实际上其他数据库也会有同样的问题）无法使用索引，如果非要转换，应该在传入的参数上进行转换</li>
 <li>由数据库自己进行转换<br>如果我们传入的数据类型和字段类型不一致，同时我们又没有做任何类型转换处理，MySQL 可能会自己对我们的数据进行类型转换操作，也可能不进行处理而交由存储引擎去处理，这样一来，就会出现索引无法使用的情况而造成执行计划问题。</li>
@@ -1136,6 +1142,81 @@
         <tag>java</tag>
         <tag>算法</tag>
         <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式概览</title>
+    <url>/2025/07/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A7%88/</url>
+    <content><![CDATA[<h1 id="设计模式概览"><a href="#设计模式概览" class="headerlink" title="设计模式概览"></a>设计模式概览</h1><h2 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a>什么是设计模式？</h2><p>设计模式（Design Pattern）是软件开发中总结和提炼出来的、被反复使用的、代码设计经验的最佳实践。它们是对软件设计中普遍存在的各种问题，所提出的通用解决方案。</p>
+<h2 id="设计模式能做什么？"><a href="#设计模式能做什么？" class="headerlink" title="设计模式能做什么？"></a>设计模式能做什么？</h2><ul>
+<li>解决软件开发中常见的设计问题。</li>
+<li>提高代码的可复用性、可维护性和可扩展性。</li>
+<li>促进团队成员之间的沟通，形成统一的设计语言。</li>
+<li>降低开发风险，加快开发速度。</li>
+</ul>
+<h2 id="设计模式的好处"><a href="#设计模式的好处" class="headerlink" title="设计模式的好处"></a>设计模式的好处</h2><ol>
+<li><strong>复用性</strong>：通过抽象和封装，提升代码的复用率。</li>
+<li><strong>可维护性</strong>：结构清晰，便于后期维护和升级。</li>
+<li><strong>可扩展性</strong>：易于在现有系统上添加新功能。</li>
+<li><strong>灵活性</strong>：降低模块之间的耦合度，提高系统灵活性。</li>
+<li><strong>标准化</strong>：为开发团队提供统一的设计标准和术语。</li>
+</ol>
+<h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p>常见的设计模式分为三大类：创建型、结构型、行为型。</p>
+<h2 id="设计模式三大类详解"><a href="#设计模式三大类详解" class="headerlink" title="设计模式三大类详解"></a>设计模式三大类详解</h2><h3 id="一、创建型模式"><a href="#一、创建型模式" class="headerlink" title="一、创建型模式"></a>一、创建型模式</h3><p><strong>特点</strong>：关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。</p>
+<p><strong>常见模式</strong>：单例、工厂方法、抽象工厂、建造者、原型。</p>
+<pre><code class="highlight mermaid">graph TD
+  B[创建型模式] --&gt; B1[单例模式]
+  B --&gt; B2[工厂方法模式]
+  B --&gt; B3[抽象工厂模式]
+  B --&gt; B4[建造者模式]
+  B --&gt; B5[原型模式]</code></pre>
+
+<p><strong>示例：单例模式（Singleton）</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单例模式示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="二、结构型模式"><a href="#二、结构型模式" class="headerlink" title="二、结构型模式"></a>二、结构型模式</h3><p><strong>特点</strong>：关注类和对象的组合，主要解决如何将类或对象按某种布局组成更大的结构。</p>
+<p><strong>常见模式</strong>：适配器、桥接、装饰器、外观、享元、代理、组合。</p>
+<pre><code class="highlight mermaid">graph TD
+  C[结构型模式] --&gt; C1[适配器模式]
+  C --&gt; C2[桥接模式]
+  C --&gt; C3[装饰器模式]
+  C --&gt; C4[外观模式]
+  C --&gt; C5[享元模式]
+  C --&gt; C6[代理模式]
+  C --&gt; C7[组合模式]</code></pre>
+
+<p><strong>示例：适配器模式（Adapter）</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 适配器模式示例</span></span><br><span class="line"><span class="comment">// 目标接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 已有的类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adaptee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">specificRequest</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;特殊请求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span> <span class="keyword">implements</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Adaptee adaptee;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Adapter</span><span class="params">(Adaptee adaptee)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.adaptee = adaptee;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span> &#123;</span><br><span class="line">        adaptee.specificRequest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Target target = new Adapter(new Adaptee());</span></span><br><span class="line"><span class="comment">// target.request();</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="三、行为型模式"><a href="#三、行为型模式" class="headerlink" title="三、行为型模式"></a>三、行为型模式</h3><p><strong>特点</strong>：关注对象之间的通信与职责分配，主要解决对象之间的高效协作。</p>
+<p><strong>常见模式</strong>：策略、模板方法、观察者、迭代器、责任链、命令、备忘录、状态、访问者、中介者、解释器。</p>
+<pre><code class="highlight mermaid">graph TD
+  D[行为型模式] --&gt; D1[策略模式]
+  D --&gt; D2[模板方法模式]
+  D --&gt; D3[观察者模式]
+  D --&gt; D4[迭代器模式]
+  D --&gt; D5[责任链模式]
+  D --&gt; D6[命令模式]
+  D --&gt; D7[备忘录模式]
+  D --&gt; D8[状态模式]
+  D --&gt; D9[访问者模式]
+  D --&gt; D10[中介者模式]
+  D --&gt; D11[解释器模式]</code></pre>
+
+<p><strong>示例：观察者模式（Observer）</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 观察者模式示例</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(String msg)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConcreteObserver</span><span class="params">(String name)</span> &#123; <span class="built_in">this</span>.name = name; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot; 收到通知: &quot;</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addObserver</span><span class="params">(Observer o)</span> &#123; observers.add(o); &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyObservers</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers) &#123;</span><br><span class="line">            o.update(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Subject subject = new Subject();</span></span><br><span class="line"><span class="comment">// subject.addObserver(new ConcreteObserver(&quot;A&quot;));</span></span><br><span class="line"><span class="comment">// subject.notifyObservers(&quot;数据更新&quot;);</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>设计模式不是现成的代码，而是一种思想和方法。合理地运用设计模式，可以让你的代码更优雅、更健壮。 </p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>编程思想</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
       </tags>
   </entry>
 </search>
