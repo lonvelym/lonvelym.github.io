@@ -22,29 +22,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lonvelym.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.1","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="1.在项目的pom中添加12345678910111213141516171819202122232425262728293031323334353637383940&lt;build&gt;    &lt;resources&gt;        &lt;!-- Resource Filter --&gt;        &lt;resource&gt;            &lt;direc">
+    <meta name="description" content="分而治之思想在计算机各层面的应用一、什么是分而治之？分而治之（Divide and Conquer），是一种经典的解决复杂问题的思想。其核心理念是：  将一个复杂的大问题，拆分成若干个小问题； 各个击破，分别解决每个小问题； 最后将各个小问题的解合并，得到整体问题的解。  这种思想贯穿于计算机科学的各个层面，从硬件到系统、架构、算法等，均有广泛应用。  二、分而治之在各层面的应用1. 计算机硬件层">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven 多环境打包">
-<meta property="og:url" content="https://lonvelym.github.io/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/index.html">
+<meta property="og:title" content="分而治之思想在计算机各层面的应用">
+<meta property="og:url" content="https://lonvelym.github.io/2025/07/07/%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E6%80%9D%E6%83%B3%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Lonvely&#39;s blog">
-<meta property="og:description" content="1.在项目的pom中添加12345678910111213141516171819202122232425262728293031323334353637383940&lt;build&gt;    &lt;resources&gt;        &lt;!-- Resource Filter --&gt;        &lt;resource&gt;            &lt;direc">
+<meta property="og:description" content="分而治之思想在计算机各层面的应用一、什么是分而治之？分而治之（Divide and Conquer），是一种经典的解决复杂问题的思想。其核心理念是：  将一个复杂的大问题，拆分成若干个小问题； 各个击破，分别解决每个小问题； 最后将各个小问题的解合并，得到整体问题的解。  这种思想贯穿于计算机科学的各个层面，从硬件到系统、架构、算法等，均有广泛应用。  二、分而治之在各层面的应用1. 计算机硬件层">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lonvelym.github.io/uploads/article/201610201.png">
-<meta property="article:published_time" content="2017-10-19T09:43:33.000Z">
-<meta property="article:modified_time" content="2025-07-07T02:47:45.405Z">
+<meta property="article:published_time" content="2025-07-07T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-11T10:20:28.629Z">
 <meta property="article:author" content="lonvely">
-<meta property="article:tag" content="maven">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="分而治之">
+<meta property="article:tag" content="架构">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lonvelym.github.io/uploads/article/201610201.png">
 
 
-<link rel="canonical" href="https://lonvelym.github.io/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/">
+<link rel="canonical" href="https://lonvelym.github.io/2025/07/07/%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E6%80%9D%E6%83%B3%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lonvelym.github.io/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/","path":"2017/10/19/maven多环境打包/","title":"maven 多环境打包"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lonvelym.github.io/2025/07/07/%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E6%80%9D%E6%83%B3%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8/","path":"2025/07/07/分而治之思想在计算机各层面的应用/","title":"分而治之思想在计算机各层面的应用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>maven 多环境打包 | Lonvely's blog</title>
+<title>分而治之思想在计算机各层面的应用 | Lonvely's blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LWCB3XHZ9"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-3LWCB3XHZ9","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -173,7 +175,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E7%9A%84pom%E4%B8%AD%E6%B7%BB%E5%8A%A0"><span class="nav-number">1.</span> <span class="nav-text">1.在项目的pom中添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%9C%A8%E4%B8%8A%E8%BE%B9%E7%9A%84resource%E8%8A%82%E7%82%B9%E6%8C%87%E5%AE%9A%E7%9A%84%E8%B7%AF%E5%BE%84%E5%88%9B%E5%BB%BAconfig-properties"><span class="nav-number">2.</span> <span class="nav-text">2.在上边的resource节点指定的路径创建config.properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4-%E7%BC%96%E8%AF%91%E9%A1%B9%E7%9B%AE%EF%BC%8C%E7%8E%AF%E5%A2%83%E6%8C%87%E5%AE%9A%E4%B8%BAdev"><span class="nav-number">3.</span> <span class="nav-text">3.运行命令 编译项目，环境指定为dev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%88%96%E8%80%85%E5%8F%AF%E4%BB%A5%E7%94%A8idea-%E6%89%93%E5%BC%80maven-projects-%E9%80%89%E6%8B%A9Profiles-%E4%B8%8B%E8%BE%B9%E7%9A%84dev%E6%88%96%E8%80%85test%E6%9D%A5%E6%89%93%E5%8C%85%E4%B8%8D%E5%90%8C%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8C%85"><span class="nav-number">4.</span> <span class="nav-text">4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E6%80%9D%E6%83%B3%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">分而治之思想在计算机各层面的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是分而治之？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E5%9C%A8%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、分而治之在各层面的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E5%B1%82%E9%9D%A2"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 计算机硬件层面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B1%82%E9%9D%A2"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 操作系统层面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E5%B1%82%E9%9D%A2"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 软件架构层面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%AE%97%E6%B3%95%E5%B1%82%E9%9D%A2"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 算法层面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B0%8F%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">三、小结</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -224,7 +226,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lonvelym.github.io/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="https://lonvelym.github.io/2025/07/07/%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E6%80%9D%E6%83%B3%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -237,12 +239,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="maven 多环境打包 | Lonvely's blog">
+      <meta itemprop="name" content="分而治之思想在计算机各层面的应用 | Lonvely's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          maven 多环境打包
+          分而治之思想在计算机各层面的应用
         </h1>
 
         <div class="post-meta-container">
@@ -253,14 +255,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2017-10-19 17:43:33" itemprop="dateCreated datePublished" datetime="2017-10-19T17:43:33+08:00">2017-10-19</time>
+      <time title="创建时间：2025-07-07 18:00:00" itemprop="dateCreated datePublished" datetime="2025-07-07T18:00:00+08:00">2025-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-07 10:47:45" itemprop="dateModified" datetime="2025-07-07T10:47:45+08:00">2025-07-07</time>
+      <time title="修改时间：2025-07-11 18:20:28" itemprop="dateModified" datetime="2025-07-11T18:20:28+08:00">2025-07-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,7 +270,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/" itemprop="url" rel="index"><span itemprop="name">编程思想</span></a>
         </span>
     </span>
 
@@ -281,18 +283,126 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="1-在项目的pom中添加"><a href="#1-在项目的pom中添加" class="headerlink" title="1.在项目的pom中添加"></a>1.在项目的pom中添加</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;resources&gt;</span><br><span class="line">        &lt;!-- Resource Filter --&gt;</span><br><span class="line">        &lt;resource&gt;</span><br><span class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</span><br><span class="line">            &lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">        &lt;/resource&gt;</span><br><span class="line">    &lt;/resources&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">    &lt;profiles&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">        &lt;!--开发环境 --&gt;</span><br><span class="line">            &lt;id&gt;dev&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">                &lt;-- 可以指定jdk的版本--&gt;</span><br><span class="line">                &lt;jdk&gt;1.6&lt;/jdk&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;localhost&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;dev&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">            &lt;id&gt;test&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.jdbc.host&gt;test.host&lt;/maven.jdbc.host&gt;</span><br><span class="line">                &lt;maven.jdbc.port&gt;3306&lt;/maven.jdbc.port&gt;</span><br><span class="line">                &lt;maven.jdbc.db&gt;test&lt;/maven.jdbc.db&gt;</span><br><span class="line">                &lt;maven.jdbc.username&gt;root&lt;/maven.jdbc.username&gt;</span><br><span class="line">                &lt;maven.jdbc.password&gt;root&lt;/maven.jdbc.password&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">    &lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h3 id="2-在上边的resource节点指定的路径创建config-properties"><a href="#2-在上边的resource节点指定的路径创建config-properties" class="headerlink" title="2.在上边的resource节点指定的路径创建config.properties"></a>2.在上边的resource节点指定的路径创建config.properties</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://$&#123;maven.jdbc.host&#125;:$&#123;maven.jdbc.port&#125;/$&#123;maven.jdbc.db&#125;</span><br><span class="line">jdbc.username=$&#123;maven.jdbc.username&#125;</span><br><span class="line">jdbc.password=$&#123;maven.jdbc.password&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-运行命令-编译项目，环境指定为dev"><a href="#3-运行命令-编译项目，环境指定为dev" class="headerlink" title="3.运行命令 编译项目，环境指定为dev"></a>3.运行命令 编译项目，环境指定为dev</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile -P dev</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h1 id="分而治之思想在计算机各层面的应用"><a href="#分而治之思想在计算机各层面的应用" class="headerlink" title="分而治之思想在计算机各层面的应用"></a>分而治之思想在计算机各层面的应用</h1><h2 id="一、什么是分而治之？"><a href="#一、什么是分而治之？" class="headerlink" title="一、什么是分而治之？"></a>一、什么是分而治之？</h2><p><strong>分而治之（Divide and Conquer）</strong>，是一种经典的解决复杂问题的思想。其核心理念是：</p>
+<ul>
+<li>将一个复杂的大问题，拆分成若干个小问题；</li>
+<li>各个击破，分别解决每个小问题；</li>
+<li>最后将各个小问题的解合并，得到整体问题的解。</li>
+</ul>
+<p>这种思想贯穿于计算机科学的各个层面，从硬件到系统、架构、算法等，均有广泛应用。</p>
+<hr>
+<h2 id="二、分而治之在各层面的应用"><a href="#二、分而治之在各层面的应用" class="headerlink" title="二、分而治之在各层面的应用"></a>二、分而治之在各层面的应用</h2><h3 id="1-计算机硬件层面"><a href="#1-计算机硬件层面" class="headerlink" title="1. 计算机硬件层面"></a>1. 计算机硬件层面</h3><p><strong>说明：</strong></p>
+<ul>
+<li>现代CPU采用多核设计，将复杂的计算任务分配到多个核心并行处理。</li>
+<li>存储系统采用分层结构（如缓存、主存、磁盘），各层分工协作。</li>
+</ul>
+<p><strong>举个例子：</strong></p>
+<ul>
+<li>多核CPU并行处理</li>
+<li>RAID磁盘阵列，把数据分块分到多个硬盘上，提高读写速度</li>
+</ul>
+<p><strong>图示：多核CPU分工</strong></p>
+<pre><code class="highlight mermaid">graph TD
+  Task[复杂任务] --&gt; Core1[核心1]
+  Task --&gt; Core2[核心2]
+  Task --&gt; Core3[核心3]
+  Task --&gt; Core4[核心4]
+  Core1 --&gt; Result1[部分结果1]
+  Core2 --&gt; Result2[部分结果2]
+  Core3 --&gt; Result3[部分结果3]
+  Core4 --&gt; Result4[部分结果4]
+  Result1 &amp; Result2 &amp; Result3 &amp; Result4 --&gt; FinalResult[最终结果]</code></pre>
 
-<p>然后打开编译后的config.properties    如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/dev</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
-<p>已经把值赋进去了。<br>同样用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile -P test</span><br></pre></td></tr></table></figure>
-<p>然后打开编译后的config.properties    如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://test.host:3306/test</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
-<h3 id="4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包"><a href="#4-或者可以用idea-打开maven-projects-选择Profiles-下边的dev或者test来打包不同的环境包" class="headerlink" title="4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包"></a>4.或者可以用idea 打开maven projects 选择Profiles 下边的dev或者test来打包不同的环境包</h3><p><img src="/uploads/article/201610201.png" alt="idea"></p>
+<hr>
+<h3 id="2-操作系统层面"><a href="#2-操作系统层面" class="headerlink" title="2. 操作系统层面"></a>2. 操作系统层面</h3><p><strong>说明：</strong></p>
+<ul>
+<li>操作系统将复杂的资源管理任务分解为进程管理、内存管理、文件系统、设备管理等子系统，各自独立又协同。</li>
+<li>进程调度、虚拟内存、分区管理等都体现了分而治之思想。</li>
+<li>操作系统和网络协议栈常采用分层结构（如应用层、传输层、网络层、数据链路层等），每层专注于自身职责，协同完成整体功能。</li>
+</ul>
+<p><strong>典型例子：</strong></p>
+<ul>
+<li>进程调度器将CPU时间片分配给不同进程</li>
+<li>虚拟内存将大内存空间分为页，按需调度</li>
+<li>OSI七层模型&#x2F;网络协议栈分层</li>
+</ul>
+<p><strong>Mermaid图：操作系统子系统分工</strong></p>
+<pre><code class="highlight mermaid">graph TD
+  OS[操作系统] --&gt; PM[进程管理]
+  OS --&gt; MM[内存管理]
+  OS --&gt; FS[文件系统]
+  OS --&gt; DM[设备管理]</code></pre>
+
+<p><strong>Mermaid图：网络协议栈分层结构</strong></p>
+<pre><code class="highlight mermaid">graph TD
+  App[应用层]
+  Trans[传输层]
+  Net[网络层]
+  Link[数据链路层]
+  Phys[物理层]
+  App --&gt; Trans
+  Trans --&gt; Net
+  Net --&gt; Link
+  Link --&gt; Phys</code></pre>
+
+<hr>
+<h3 id="3-软件架构层面"><a href="#3-软件架构层面" class="headerlink" title="3. 软件架构层面"></a>3. 软件架构层面</h3><p><strong>说明：</strong></p>
+<ul>
+<li>将庞大、复杂的系统拆分为多个相对独立的模块、服务或子系统。</li>
+<li>每个模块&#x2F;服务专注于特定领域，降低耦合，提高可维护性和可扩展性。</li>
+</ul>
+<p><strong>典型例子：</strong></p>
+<ul>
+<li>分层架构（如Web三层架构：表现层、业务逻辑层、数据访问层）</li>
+<li>前后端分离（前端和后端各自独立开发、部署，通过API接口通信）</li>
+<li>微服务架构（每个服务独立部署、扩展）</li>
+<li>领域驱动设计的限界上下文</li>
+<li>🛒 如在电商系统中，订单、商品、库存、用户服务的分拆，就是分而治之在微服务架构中的体现。</li>
+</ul>
+<p><strong>Mermaid图：Web三层架构</strong></p>
+<pre><code class="highlight mermaid">graph TD
+  View[表现层（前端/视图）] --&gt; BLL[业务逻辑层]
+  BLL --&gt; DAL[数据访问层]
+  DAL --&gt; DB[(数据库)]</code></pre>
+
+<p><strong>Mermaid图：微服务架构</strong></p>
+<pre><code class="highlight mermaid">graph LR
+  Client[客户端] --&gt; API[API网关]
+  API --&gt; S1[用户服务]
+  API --&gt; S2[订单服务]
+  API --&gt; S3[商品服务]
+  S1 --&gt; DB1[(用户数据库)]
+  S2 --&gt; DB2[(订单数据库)]
+  S3 --&gt; DB3[(商品数据库)]</code></pre>
+
+<hr>
+<h3 id="4-算法层面"><a href="#4-算法层面" class="headerlink" title="4. 算法层面"></a>4. 算法层面</h3><p><strong>说明：</strong></p>
+<ul>
+<li>许多经典算法本质上就是分而治之的体现。</li>
+<li>通过递归或迭代，将大问题拆解为小问题，分别求解后合并。</li>
+</ul>
+<p><strong>典型例子：</strong></p>
+<ul>
+<li>归并排序、快速排序、二分查找、FFT等</li>
+</ul>
+<p><strong>Mermaid图：归并排序分治流程</strong></p>
+<pre><code class="highlight mermaid">graph TD
+  A[原始数组] --&gt; B1[分成左半部分]
+  A --&gt; B2[分成右半部分]
+  B1 --&gt; C1[递归排序左半部分]
+  B2 --&gt; C2[递归排序右半部分]
+  C1 &amp; C2 --&gt; D[合并两个有序数组]</code></pre>
+
+<hr>
+<h2 id="三、小结"><a href="#三、小结" class="headerlink" title="三、小结"></a>三、小结</h2><ul>
+<li>在日常开发中，系统变复杂、代码变臃肿、协作变低效时，不妨问问自己：<ul>
+<li>这个系统能不能拆分成更小的部分？</li>
+<li>每个模块的职责是否足够单一？</li>
+<li>各部分之间是否可以做到更独立？</li>
+</ul>
+</li>
+<li>分而治之的设计思路，往往能让复杂问题变得简单，让系统更易维护、扩展，也让团队协作更高效。</li>
+</ul>
 
     </div>
 
@@ -310,7 +420,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://lonvelym.github.io/2017/10/19/maven%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/" title="maven 多环境打包">https://lonvelym.github.io/2017/10/19/maven多环境打包/</a>
+      <a href="https://lonvelym.github.io/2025/07/07/%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E6%80%9D%E6%83%B3%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E9%9D%A2%E7%9A%84%E5%BA%94%E7%94%A8/" title="分而治之思想在计算机各层面的应用">https://lonvelym.github.io/2025/07/07/分而治之思想在计算机各层面的应用/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -319,21 +429,22 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/maven/" rel="tag"># maven</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" rel="tag"># 分而治之</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag"># 架构</a>
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2017/05/10/%E5%B0%BE%E9%80%92%E5%BD%92/" rel="prev" title="尾递归">
-                  <i class="fa fa-angle-left"></i> 尾递归
+                <a href="/2025/07/07/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" rel="prev" title="创建型设计模式详解">
+                  <i class="fa fa-angle-left"></i> 创建型设计模式详解
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/10/19/linux%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="linux部署项目常用命令">
-                  linux部署项目常用命令 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
