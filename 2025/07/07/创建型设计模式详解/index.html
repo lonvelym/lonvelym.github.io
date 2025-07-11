@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lonvelym.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="创建型设计模式详解创建型设计模式关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。常见的五种创建型模式有：单例模式、工厂方法模式、抽象工厂模式、建造者模式、原型模式。  一、单例模式（Singleton）核心思想：  保证某个类在整个程序运行期间只有一个实例，并提供全局访问点。  适用场景：  只需要一个实例的对象，如日志管理器、配置管理类、数据库连接池、操作系统的任务管理器等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建型设计模式详解">
+<meta property="og:url" content="https://lonvelym.github.io/2025/07/07/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Lonvely&#39;s blog">
+<meta property="og:description" content="创建型设计模式详解创建型设计模式关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。常见的五种创建型模式有：单例模式、工厂方法模式、抽象工厂模式、建造者模式、原型模式。  一、单例模式（Singleton）核心思想：  保证某个类在整个程序运行期间只有一个实例，并提供全局访问点。  适用场景：  只需要一个实例的对象，如日志管理器、配置管理类、数据库连接池、操作系统的任务管理器等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-07T09:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-11T07:57:44.379Z">
+<meta property="article:author" content="lonvely">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="创建型">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lonvelym.github.io/2025/07/07/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lonvelym.github.io/2025/07/07/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/","path":"2025/07/07/创建型设计模式详解/","title":"创建型设计模式详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>创建型设计模式详解 | Lonvely's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lonvely's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">想清楚，讲明白，写下来</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">创建型设计模式详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、单例模式（Singleton）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%EF%BC%88Factory-Method%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">二、工厂方法模式（Factory Method）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%88Abstract-Factory%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">三、抽象工厂模式（Abstract Factory）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%88Builder%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">四、建造者模式（Builder）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%EF%BC%88Prototype%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">五、原型模式（Prototype）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">1.5.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">lonvely</p>
+  <div class="site-description" itemprop="description">我很孤独用英文怎么讲，I LOVE YOU.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lonvelym.github.io/2025/07/07/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lonvely">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lonvely's blog">
+      <meta itemprop="description" content="我很孤独用英文怎么讲，I LOVE YOU.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="创建型设计模式详解 | Lonvely's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          创建型设计模式详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-07 17:00:00" itemprop="dateCreated datePublished" datetime="2025-07-07T17:00:00+08:00">2025-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-11 15:57:44" itemprop="dateModified" datetime="2025-07-11T15:57:44+08:00">2025-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/" itemprop="url" rel="index"><span itemprop="name">编程思想</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="创建型设计模式详解"><a href="#创建型设计模式详解" class="headerlink" title="创建型设计模式详解"></a>创建型设计模式详解</h1><p>创建型设计模式关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。常见的五种创建型模式有：单例模式、工厂方法模式、抽象工厂模式、建造者模式、原型模式。</p>
+<hr>
+<h2 id="一、单例模式（Singleton）"><a href="#一、单例模式（Singleton）" class="headerlink" title="一、单例模式（Singleton）"></a>一、单例模式（Singleton）</h2><p><strong>核心思想：</strong></p>
+<ul>
+<li>保证某个类在整个程序运行期间只有一个实例，并提供全局访问点。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>只需要一个实例的对象，如日志管理器、配置管理类、数据库连接池、操作系统的任务管理器等。</li>
+</ul>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点：节省资源，避免冲突，便于统一管理。</li>
+<li>缺点：不适合频繁变更对象的场景，多线程下需注意线程安全。</li>
+</ul>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><pre><code class="highlight mermaid">classDiagram
+    class Singleton &#123;
+        -Singleton instance
+        -Singleton()
+        +getInstance()
+    &#125;</code></pre>
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><strong>业务场景：</strong></p>
+<ul>
+<li>系统中日志记录通常需要全局唯一，方便统一管理和输出。</li>
+</ul>
+<p><strong>设计思路：</strong></p>
+<ul>
+<li>使用单例模式设计Logger类，保证全局只有一个日志对象。</li>
+<li>所有模块都通过Logger来记录日志，避免资源浪费和多实例冲突。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 日志管理器单例示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Logger</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Logger</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Logger</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Logger <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">log</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;[LOG] &quot;</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Logger.getInstance().log(&quot;系统启动&quot;);</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二、工厂方法模式（Factory-Method）"><a href="#二、工厂方法模式（Factory-Method）" class="headerlink" title="二、工厂方法模式（Factory Method）"></a>二、工厂方法模式（Factory Method）</h2><p><strong>核心思想：</strong></p>
+<ul>
+<li>将对象的创建延迟到子类，通过工厂接口让子类决定实例化哪一个类。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>不确定要实例化哪种具体产品时。</li>
+<li>需要扩展新的产品类型时。</li>
+<li>如日志框架、数据库驱动、框架扩展点（如Spring的BeanFactory）。</li>
+</ul>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点：符合开闭原则，便于扩展。</li>
+<li>缺点：类的数量增加，结构变复杂。</li>
+</ul>
+<h3 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h3><pre><code class="highlight mermaid">classDiagram
+    Product &lt;|.. ConcreteProductA
+    Product &lt;|.. ConcreteProductB
+    Creator &lt;|.. ConcreteCreatorA
+    Creator &lt;|.. ConcreteCreatorB
+    class Creator &#123;
+        +factoryMethod()
+    &#125;
+    class ConcreteCreatorA &#123;
+        +factoryMethod()
+    &#125;
+    class ConcreteCreatorB &#123;
+        +factoryMethod()
+    &#125;
+    class Product
+    class ConcreteProductA
+    class ConcreteProductB</code></pre>
+
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p><strong>业务场景：</strong></p>
+<ul>
+<li>支付系统支持多种支付方式，如支付宝和微信。</li>
+</ul>
+<p><strong>设计思路：</strong></p>
+<ul>
+<li>通过工厂方法模式，将支付对象的创建交给不同的工厂子类。</li>
+<li>客户端只需选择对应的工厂即可获得所需的支付实现，便于扩展和维护。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支付渠道工厂方法示例</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Payment</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">pay</span><span class="params">(<span class="type">double</span> amount)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alipay</span> <span class="keyword">implements</span> <span class="title class_">Payment</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pay</span><span class="params">(<span class="type">double</span> amount)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;使用支付宝支付：&quot;</span> + amount + <span class="string">&quot;元&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WechatPay</span> <span class="keyword">implements</span> <span class="title class_">Payment</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pay</span><span class="params">(<span class="type">double</span> amount)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;使用微信支付：&quot;</span> + amount + <span class="string">&quot;元&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">PaymentFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> Payment <span class="title function_">createPayment</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AlipayFactory</span> <span class="keyword">extends</span> <span class="title class_">PaymentFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Payment <span class="title function_">createPayment</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Alipay</span>(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WechatPayFactory</span> <span class="keyword">extends</span> <span class="title class_">PaymentFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Payment <span class="title function_">createPayment</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WechatPay</span>(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// PaymentFactory factory = new AlipayFactory();</span></span><br><span class="line"><span class="comment">// Payment payment = factory.createPayment();</span></span><br><span class="line"><span class="comment">// payment.pay(100.0);</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、抽象工厂模式（Abstract-Factory）"><a href="#三、抽象工厂模式（Abstract-Factory）" class="headerlink" title="三、抽象工厂模式（Abstract Factory）"></a>三、抽象工厂模式（Abstract Factory）</h2><p><strong>核心思想：</strong></p>
+<ul>
+<li>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>需要一整套产品族（如一套UI控件）且要求产品之间风格一致时。</li>
+<li>跨平台UI库、数据库访问层、游戏皮肤系统等。</li>
+</ul>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点：产品族一致，切换产品系列方便。</li>
+<li>缺点：新增产品族困难，结构复杂。</li>
+</ul>
+<h3 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h3><pre><code class="highlight mermaid">classDiagram
+    AbstractFactory &lt;|.. ConcreteFactory1
+    AbstractFactory &lt;|.. ConcreteFactory2
+    AbstractProductA &lt;|.. ProductA1
+    AbstractProductA &lt;|.. ProductA2
+    AbstractProductB &lt;|.. ProductB1
+    AbstractProductB &lt;|.. ProductB2
+    class AbstractFactory &#123;
+        +createProductA()
+        +createProductB()
+    &#125;
+    class ConcreteFactory1 &#123;
+        +createProductA()
+        +createProductB()
+    &#125;
+    class ConcreteFactory2 &#123;
+        +createProductA()
+        +createProductB()
+    &#125;
+    class AbstractProductA
+    class ProductA1
+    class ProductA2
+    class AbstractProductB
+    class ProductB1
+    class ProductB2</code></pre>
+
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p><strong>业务场景：</strong></p>
+<ul>
+<li>需要开发一套既能在Windows系统下运行，也能在Mac系统下运行的应用，界面风格需统一。</li>
+</ul>
+<p><strong>设计思路：</strong></p>
+<ul>
+<li>使用抽象工厂模式，根据不同平台创建不同风格的控件（如按钮）。</li>
+<li>切换平台时只需更换工厂，保证界面风格一致。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跨平台UI控件抽象工厂示例</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Button</span> &#123; <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span>; &#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WindowsButton</span> <span class="keyword">implements</span> <span class="title class_">Button</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123; System.out.println(<span class="string">&quot;渲染Windows风格按钮&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MacButton</span> <span class="keyword">implements</span> <span class="title class_">Button</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123; System.out.println(<span class="string">&quot;渲染Mac风格按钮&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">UIFactory</span> &#123;</span><br><span class="line">    Button <span class="title function_">createButton</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WindowsFactory</span> <span class="keyword">implements</span> <span class="title class_">UIFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Button <span class="title function_">createButton</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WindowsButton</span>(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MacFactory</span> <span class="keyword">implements</span> <span class="title class_">UIFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Button <span class="title function_">createButton</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MacButton</span>(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// UIFactory factory = new WindowsFactory();</span></span><br><span class="line"><span class="comment">// Button btn = factory.createButton();</span></span><br><span class="line"><span class="comment">// btn.paint();</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、建造者模式（Builder）"><a href="#四、建造者模式（Builder）" class="headerlink" title="四、建造者模式（Builder）"></a>四、建造者模式（Builder）</h2><p><strong>核心思想：</strong></p>
+<ul>
+<li>将复杂对象的构建与其表示分离，同样的构建过程可以创建不同的表示。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>需要构建复杂对象（如订单、报表、文档等），且对象的各个部分经常变化。</li>
+<li>StringBuilder、复杂对象组装、UI组件链式调用等。</li>
+</ul>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点：封装性好，构建过程与表示分离，便于扩展。</li>
+<li>缺点：产品结构简单时不适用。</li>
+</ul>
+<h3 id="类图-3"><a href="#类图-3" class="headerlink" title="类图"></a>类图</h3><pre><code class="highlight mermaid">classDiagram
+    class Builder &#123;
+        +buildPartA()
+        +buildPartB()
+        +getResult()
+    &#125;
+    class ConcreteBuilder &#123;
+        +buildPartA()
+        +buildPartB()
+        +getResult()
+    &#125;
+    class Director &#123;
+        +construct()
+    &#125;
+    Builder &lt;|.. ConcreteBuilder
+    Director --&gt; Builder</code></pre>
+
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><p><strong>业务场景：</strong></p>
+<ul>
+<li>订单系统需要创建包含商品、数量、收货地址等信息的订单对象。</li>
+</ul>
+<p><strong>设计思路：</strong></p>
+<ul>
+<li>使用建造者模式，将订单的各个部分分步构建，最后统一生成完整订单。</li>
+<li>便于扩展和维护不同类型的订单。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订单建造者示例</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Order</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String product;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> quantity;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setProduct</span><span class="params">(String product)</span> &#123; <span class="built_in">this</span>.product = product; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setQuantity</span><span class="params">(<span class="type">int</span> quantity)</span> &#123; <span class="built_in">this</span>.quantity = quantity; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAddress</span><span class="params">(String address)</span> &#123; <span class="built_in">this</span>.address = address; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;商品: &quot;</span> + product + <span class="string">&quot;, 数量: &quot;</span> + quantity + <span class="string">&quot;, 地址: &quot;</span> + address);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">OrderBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">Order</span> <span class="variable">order</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Order</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">buildProduct</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">buildQuantity</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">buildAddress</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> Order <span class="title function_">getOrder</span><span class="params">()</span> &#123; <span class="keyword">return</span> order; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OnlineOrderBuilder</span> <span class="keyword">extends</span> <span class="title class_">OrderBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">buildProduct</span><span class="params">()</span> &#123; order.setProduct(<span class="string">&quot;手机&quot;</span>); &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">buildQuantity</span><span class="params">()</span> &#123; order.setQuantity(<span class="number">2</span>); &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">buildAddress</span><span class="params">()</span> &#123; order.setAddress(<span class="string">&quot;北京朝阳区&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OrderDirector</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> OrderBuilder builder;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">OrderDirector</span><span class="params">(OrderBuilder builder)</span> &#123; <span class="built_in">this</span>.builder = builder; &#125;</span><br><span class="line">    <span class="keyword">public</span> Order <span class="title function_">construct</span><span class="params">()</span> &#123;</span><br><span class="line">        builder.buildProduct();</span><br><span class="line">        builder.buildQuantity();</span><br><span class="line">        builder.buildAddress();</span><br><span class="line">        <span class="keyword">return</span> builder.getOrder();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// OrderBuilder builder = new OnlineOrderBuilder();</span></span><br><span class="line"><span class="comment">// OrderDirector director = new OrderDirector(builder);</span></span><br><span class="line"><span class="comment">// Order order = director.construct();</span></span><br><span class="line"><span class="comment">// order.show();</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、原型模式（Prototype）"><a href="#五、原型模式（Prototype）" class="headerlink" title="五、原型模式（Prototype）"></a>五、原型模式（Prototype）</h2><p><strong>核心思想：</strong></p>
+<ul>
+<li>通过复制现有实例（克隆）来创建新对象，而不是每次都 new 一个。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>创建成本高、初始化复杂或需要大量相似对象时。</li>
+<li>游戏中的怪物&#x2F;道具复制、Office文档模板、图形编辑器中的图形复制等。</li>
+</ul>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点：创建对象效率高，适合大对象的复制。</li>
+<li>缺点：需要实现克隆方法，复杂对象的深拷贝需额外处理。</li>
+</ul>
+<h3 id="类图-4"><a href="#类图-4" class="headerlink" title="类图"></a>类图</h3><pre><code class="highlight mermaid">classDiagram
+    class Prototype &#123;
+        +clone()
+    &#125;
+    Prototype &lt;|.. ConcretePrototype
+    class ConcretePrototype &#123;
+        +clone()
+    &#125;</code></pre>
+
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><p><strong>业务场景：</strong></p>
+<ul>
+<li>需要快速生成多份内容相似的新文档，如基于模板批量创建文档。</li>
+</ul>
+<p><strong>设计思路：</strong></p>
+<ul>
+<li>使用原型模式，通过克隆模板对象来创建新文档，避免重复构建，提升效率。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文档模板原型模式示例</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Document</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Document</span><span class="params">(String content)</span> &#123; <span class="built_in">this</span>.content = content; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setContent</span><span class="params">(String content)</span> &#123; <span class="built_in">this</span>.content = content; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123; System.out.println(<span class="string">&quot;文档内容: &quot;</span> + content); &#125;</span><br><span class="line">    <span class="keyword">public</span> Document <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Document</span>(<span class="built_in">this</span>.content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Document template = new Document(&quot;模板内容&quot;);</span></span><br><span class="line"><span class="comment">// Document doc1 = template.clone();</span></span><br><span class="line"><span class="comment">// doc1.setContent(&quot;我的第一份文档&quot;);</span></span><br><span class="line"><span class="comment">// doc1.print();</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>lonvely
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://lonvelym.github.io/2025/07/07/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" title="创建型设计模式详解">https://lonvelym.github.io/2025/07/07/创建型设计模式详解/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+              <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B/" rel="tag"># 创建型</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A7%88/" rel="prev" title="设计模式概览">
+                  <i class="fa fa-angle-left"></i> 设计模式概览
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lonvely's blog</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
