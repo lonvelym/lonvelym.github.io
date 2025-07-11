@@ -65,58 +65,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Intellij IDEA Lambda提示 Can be replaced with method reference</title>
-    <url>/2016/11/10/Intellij-IDEA-Lambda%E6%8F%90%E7%A4%BA-Can-be-replaced-with-method-reference/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在IDEA中使用lambda表达式有时会有这样的提示：Can be replaced with method reference…<br><img src="/uploads/article/IntellijIDEALambda20161110151454.png" alt="提示"></p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>出现这种提示一般可以将表达式改为用<code>::</code>关键字</p>
-<table>
-<thead>
-<tr>
-<th>方法引用</th>
-<th align="center">等价的lambda表达式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>String::valueOf</code></td>
-<td align="center"><code>x -&gt; String.valueOf(x)</code></td>
-</tr>
-<tr>
-<td><code>Object::toString</code></td>
-<td align="center"><code>x -&gt; x.toString()</code></td>
-</tr>
-<tr>
-<td><code>x::toString</code></td>
-<td align="center"><code>() -&gt; x.toString()</code></td>
-</tr>
-<tr>
-<td><code>ArrayList::new</code></td>
-<td align="center"><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
-</tr>
-</tbody></table>
-<span id="more"></span>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>静态方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().forEach(s -&gt; System.out.println(s));//System.out.println(s)会有提示</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>如果调用有一个参数的普通方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;Tag&gt; tagList = Arrays.asList(new Tag(&quot;map&quot;),new Tag(&quot;java8&quot;),new Tag(&quot;filter&quot;));</span><br><span class="line">tagList.stream().map(tag -&gt; tag.getName());//tag.getName()会有提示</span><br></pre></td></tr></table></figure>
-<p>可以替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tagList.stream().map(Tag::getName);</span><br></pre></td></tr></table></figure>
-<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h4><p>还有两个参数的普通方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().sorted((o1, o2) -&gt; o1.compareTo(o2));//o1.compareTo(o2)会有提示</span><br></pre></td></tr></table></figure>
-<p>可以替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted(String::compareTo);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-      <tags>
-        <tag>IDEA</tag>
-        <tag>Lambda</tag>
-        <tag>Java8</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IntelliJ IDEA快捷键</title>
     <url>/2016/10/28/IntelliJ-IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<h5 id="Search-Replace"><a href="#Search-Replace" class="headerlink" title="Search&#x2F;Replace"></a>Search&#x2F;Replace</h5><table>
@@ -746,6 +694,58 @@
       </tags>
   </entry>
   <entry>
+    <title>Intellij IDEA Lambda提示 Can be replaced with method reference</title>
+    <url>/2016/11/10/Intellij-IDEA-Lambda%E6%8F%90%E7%A4%BA-Can-be-replaced-with-method-reference/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在IDEA中使用lambda表达式有时会有这样的提示：Can be replaced with method reference…<br><img src="/uploads/article/IntellijIDEALambda20161110151454.png" alt="提示"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>出现这种提示一般可以将表达式改为用<code>::</code>关键字</p>
+<table>
+<thead>
+<tr>
+<th>方法引用</th>
+<th align="center">等价的lambda表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String::valueOf</code></td>
+<td align="center"><code>x -&gt; String.valueOf(x)</code></td>
+</tr>
+<tr>
+<td><code>Object::toString</code></td>
+<td align="center"><code>x -&gt; x.toString()</code></td>
+</tr>
+<tr>
+<td><code>x::toString</code></td>
+<td align="center"><code>() -&gt; x.toString()</code></td>
+</tr>
+<tr>
+<td><code>ArrayList::new</code></td>
+<td align="center"><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>静态方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().forEach(s -&gt; System.out.println(s));//System.out.println(s)会有提示</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>如果调用有一个参数的普通方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;Tag&gt; tagList = Arrays.asList(new Tag(&quot;map&quot;),new Tag(&quot;java8&quot;),new Tag(&quot;filter&quot;));</span><br><span class="line">tagList.stream().map(tag -&gt; tag.getName());//tag.getName()会有提示</span><br></pre></td></tr></table></figure>
+<p>可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tagList.stream().map(Tag::getName);</span><br></pre></td></tr></table></figure>
+<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h4><p>还有两个参数的普通方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; tags = Arrays.asList(&quot;ac&quot;, &quot;ccc&quot;, &quot;c&quot;, &quot;dd&quot;, &quot;axx&quot;, &quot;f&quot;);</span><br><span class="line">tags.stream().sorted((o1, o2) -&gt; o1.compareTo(o2));//o1.compareTo(o2)会有提示</span><br></pre></td></tr></table></figure>
+<p>可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags.stream().sorted(String::compareTo);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>Lambda</tag>
+        <tag>Java8</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL 数据库性能优化之SQL优化</title>
     <url>/2016/10/24/MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BSQL%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<h4 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h4><ol>
@@ -780,7 +780,7 @@
 <li><h5 id="优先优化高并发的-SQL，而不是执行频率低某些“大”SQL"><a href="#优先优化高并发的-SQL，而不是执行频率低某些“大”SQL" class="headerlink" title="优先优化高并发的 SQL，而不是执行频率低某些“大”SQL"></a>优先优化高并发的 SQL，而不是执行频率低某些“大”SQL</h5></li>
 </ol>
 <p>对于破坏性来说，高并发的 SQL 总是会比低频率的来得大，因为高并发的 SQL 一旦出现问题，甚至不会给我们任何喘息的机会就会将系统压跨。而对于一些虽然需要消耗大量 IO 而且响应很慢的 SQL，由于频率低，即使遇到，最多就是让整个系统响应慢一点，但至少可能撑一会儿，让我们有缓冲的机会。<br>10. ##### 从全局出发优化，而不是片面调整<br>SQL 优化不能是单独针对某一个进行，而应充分考虑系统中所有的 SQL，尤其是在通过调整索引优化 SQL 的执行计划的时候，千万不能顾此失彼，因小失大。<br>11. #####  尽可能对每一条运行在数据库中的SQL进行 explain<br>优化 SQL，需要做到心中有数，知道 SQL 的执行计划才能判断是否有优化余地，才能判断是否存在执行计划问题。在对数据库中运行的 SQL 进行了一段时间的优化之后，很明显的问题 SQL 可能已经很少了，大多都需要去发掘，这时候就需要进行大量的 explain 操作收集执行计划，并判断是否需要进行优化。</p>
-<p>作者：Sky.Jian  <a href="http://isky000.com/database/mysql-performance-tuning-sql">原文地址</a></p>
+<p>作者：Sky.Jian  <span class="exturl" data-url="aHR0cDovL2lza3kwMDAuY29tL2RhdGFiYXNlL215c3FsLXBlcmZvcm1hbmNlLXR1bmluZy1zcWw=">原文地址<i class="fa fa-external-link-alt"></i></span></p>
 ]]></content>
       <categories>
         <category>mysql</category>
@@ -1002,70 +1002,6 @@
       </tags>
   </entry>
   <entry>
-    <title>周星驰电影经典台词</title>
-    <url>/2016/10/20/%E5%91%A8%E6%98%9F%E9%A9%B0%E7%94%B5%E5%BD%B1%E7%BB%8F%E5%85%B8%E5%8F%B0%E8%AF%8D/</url>
-    <content><![CDATA[<h4 id="《国产凌凌漆》"><a href="#《国产凌凌漆》" class="headerlink" title="《国产凌凌漆》"></a>《国产凌凌漆》</h4><ul>
-<li><p>你以为躲起来就找不到你了吗？没有用的！象你这样出色的男人，无论在什么地方，都像漆黑中的萤火虫一样，那样的鲜明，那样的出众。你那忧郁的眼神，稀嘘的胡喳子，神乎其神的刀法，和那杯Dry Martine，都深深地迷住了我。不过，虽然这是这样的出色，但是行有行规，无论怎样你要付清昨晚的过夜费呀，叫女人不用给钱吗？</p>
-</li>
-<li><p>就算是一条底裤，一张厕纸，都有它的用处。</p>
-</li>
-<li><p>古有关云长全神贯注下象棋刮骨疗毒，今有我零零漆聚精会神看A片挖骨取弹头。</p>
-</li>
-</ul>
-<span id="more"></span>
-<h4 id="《破坏之王》"><a href="#《破坏之王》" class="headerlink" title="《破坏之王》"></a>《破坏之王》</h4><ul>
-<li><p>不要误会,我不是针对你,我是说在座的各位都是垃圾.</p>
-</li>
-<li><p>除暴安良是我做市民的责任，积德行善是我的兴趣</p>
-</li>
-</ul>
-<h4 id="《算死草》"><a href="#《算死草》" class="headerlink" title="《算死草》"></a>《算死草》</h4><ul>
-<li>我很孤独用英文怎么讲，I LOVE YOU.</li>
-</ul>
-<h4 id="《喜剧之王》"><a href="#《喜剧之王》" class="headerlink" title="《喜剧之王》"></a>《喜剧之王》</h4><ul>
-<li><p>其实我是一个演员</p>
-</li>
-<li><p>看，前面漆黑一片，什么都看不到。”-“也不是，天亮以后便会很美的。”</p>
-</li>
-</ul>
-<h4 id="《唐伯虎点秋香》"><a href="#《唐伯虎点秋香》" class="headerlink" title="《唐伯虎点秋香》"></a>《唐伯虎点秋香》</h4><ul>
-<li>秉夫人，小人本住在，苏州的城边，家中有屋又有田，生活乐无边，谁知那唐伯虎，他蛮横不留情，勾结官府目无天，占我大屋夺我田，我爷爷跟他来翻脸，反被他一棍来打扁，我奶奶骂他欺善民，反被他捉进了唐府，强奸了一百遍，一百遍。最后她悬梁自尽遗恨人间。他还将我父子，逐出了家园，流浪到江边。我为求养老爹，惟有独自行乞在庙前，谁知那唐伯虎，他实在太阴险，知道此情形，竟派人来暗算，将我父子狂殴在市前，小人身壮健，残命得留全，可怜老父他魂归天，此恨更难添。我为求葬老爹，惟有卖身为奴自作贱，一边勤赚钱，一边读书篇，发誓把功名显，手刃仇人意志坚，从此唐寅诗集伴身边，我牢记此仇不共戴天。。。</li>
-</ul>
-<h4 id="《少林足球》"><a href="#《少林足球》" class="headerlink" title="《少林足球》"></a>《少林足球》</h4><ul>
-<li><p>做人如果没有理想，那跟咸鱼有什么区别？</p>
-</li>
-<li><p>球不是这么踢滴。</p>
-</li>
-<li><p>我觉得我现在很漂亮，我也很喜欢我现在这个样子，你要是不喜欢看，你可以走开。</p>
-</li>
-<li><p>我一秒钟几十万上下，我会和你们去吃杂碎面？</p>
-</li>
-</ul>
-<h4 id="《大话西游》"><a href="#《大话西游》" class="headerlink" title="《大话西游》"></a>《大话西游》</h4><ul>
-<li><p>曾经有一段真挚的感情摆在我面前我没有珍惜，等到失去时才后悔莫及。人生最悲哀的事情莫过于此。如果上天能再给我一次重来的机会，我会对那个女孩说三个字：我爱你。如果要在这段感情前加个期限，我希望是一万年！</p>
-</li>
-<li><p>爱一个人需要理由吗？不需要吗？需要吗？</p>
-</li>
-</ul>
-<h4 id="《功夫》"><a href="#《功夫》" class="headerlink" title="《功夫》"></a>《功夫》</h4><ul>
-<li>本来我是想拿那些钱，当个律师，或者是医生，但是一想到要拯救世界和平，哎。。。</li>
-</ul>
-<h4 id="《长江七号》"><a href="#《长江七号》" class="headerlink" title="《长江七号》"></a>《长江七号》</h4><ul>
-<li>我们虽然穷但不乱说脏话，我们不去偷，我们不去抢，不属于自己的东西，我们不会拿。</li>
-</ul>
-<h4 id="《行运一条龙》"><a href="#《行运一条龙》" class="headerlink" title="《行运一条龙》"></a>《行运一条龙》</h4><ul>
-<li>我告诉你，泡妞的方法只有两个字—英俊</li>
-</ul>
-]]></content>
-      <categories>
-        <category>电影</category>
-      </categories>
-      <tags>
-        <tag>周星驰</tag>
-        <tag>台词</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql explain 执行计划</title>
     <url>/2021/06/17/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p><code>explain select * from t</code><br><img src="/uploads/article/mysql-explain-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%921.png"></p>
@@ -1107,116 +1043,6 @@
       </categories>
       <tags>
         <tag>sql优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>尾递归</title>
-    <url>/2017/05/10/%E5%B0%BE%E9%80%92%E5%BD%92/</url>
-    <content><![CDATA[<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在数学与计算机科学中，是指在函数的定义中使用函数自身的方法。<br>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//计算num+(num-1)+(num-2)+...</span><br><span class="line">public int decrease(int num)</span><br><span class="line">&#123;</span><br><span class="line">    if (num == 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return decrease(num - 1) + num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>如果num比较小，代码是没有问题，但是如果num比较大递归比较深的话，就会栈溢出：java.lang.StackOverflowError<br>原因是因为decrease函数调用自身，然后再加上num，此时的需要等待decrease调用完成才能完成加法，也就是必须等到最后一个计算完，才能一个一个的返回，因此需要递归到最后一个函数完成时才能一个一个释放函数，所以当递归比较深的话，就会栈溢出。</p>
-<h2 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h2><p>尾递归是在函数最后调用自身，每次调用完成后执行下次调用，不用存储函数状态，所以也不会有栈溢出。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static int decrease(int num, int total)</span><br><span class="line">&#123;</span><br><span class="line">    if (num == 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return decrease(num-1,total + num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速排序</title>
-    <url>/2017/02/17/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n)算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
-<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>1.选定一个合适的值（理想情况中值最好，但实现中一般使用数组第一个值）,称为“枢轴”(pivot)。<br>2.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。<br>3.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
-<span id="more"></span>
-<h2 id="java实现"><a href="#java实现" class="headerlink" title="java实现"></a>java实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">//原地分区实现</span><br><span class="line">private static int partition(int[] arr, int low, int high)</span><br><span class="line">&#123;</span><br><span class="line">    int pivot = arr[low];//以第一个值为pivot</span><br><span class="line">    while (low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        while (low &lt; high &amp;&amp; arr[high] &gt;= pivot)</span><br><span class="line">        &#123;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[low] = arr[high];</span><br><span class="line">        while (low &lt; high &amp;&amp; arr[low] &lt;= pivot)</span><br><span class="line">        &#123;</span><br><span class="line">            low++;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[high] = arr[low];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[low] = pivot;</span><br><span class="line">    return low;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void sort(int[] arr, int low, int high)</span><br><span class="line">  &#123;</span><br><span class="line">      if (low &gt;= high)</span><br><span class="line">      &#123;</span><br><span class="line">          return;</span><br><span class="line">      &#125;</span><br><span class="line">      int pivotIndex = partition(arr, low, high);</span><br><span class="line">      sort(arr, low, pivotIndex - 1);</span><br><span class="line">      sort(arr, pivotIndex + 1, high);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">  int[] arr = &#123;7, 4, 3, 8, 1, 2, 5, 6&#125;;</span><br><span class="line"></span><br><span class="line">  sort(arr, 0, arr.length - 1);</span><br><span class="line">  for (int i : arr)</span><br><span class="line">  &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式概览</title>
-    <url>/2025/07/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A7%88/</url>
-    <content><![CDATA[<h1 id="设计模式概览"><a href="#设计模式概览" class="headerlink" title="设计模式概览"></a>设计模式概览</h1><h2 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a>什么是设计模式？</h2><p>设计模式（Design Pattern）是软件开发中总结和提炼出来的、被反复使用的、代码设计经验的最佳实践。它们是对软件设计中普遍存在的各种问题，所提出的通用解决方案。</p>
-<h2 id="设计模式能做什么？"><a href="#设计模式能做什么？" class="headerlink" title="设计模式能做什么？"></a>设计模式能做什么？</h2><ul>
-<li>解决软件开发中常见的设计问题。</li>
-<li>提高代码的可复用性、可维护性和可扩展性。</li>
-<li>促进团队成员之间的沟通，形成统一的设计语言。</li>
-<li>降低开发风险，加快开发速度。</li>
-</ul>
-<h2 id="设计模式的好处"><a href="#设计模式的好处" class="headerlink" title="设计模式的好处"></a>设计模式的好处</h2><ol>
-<li><strong>复用性</strong>：通过抽象和封装，提升代码的复用率。</li>
-<li><strong>可维护性</strong>：结构清晰，便于后期维护和升级。</li>
-<li><strong>可扩展性</strong>：易于在现有系统上添加新功能。</li>
-<li><strong>灵活性</strong>：降低模块之间的耦合度，提高系统灵活性。</li>
-<li><strong>标准化</strong>：为开发团队提供统一的设计标准和术语。</li>
-</ol>
-<h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p>常见的设计模式分为三大类：创建型、结构型、行为型。</p>
-<h2 id="设计模式三大类详解"><a href="#设计模式三大类详解" class="headerlink" title="设计模式三大类详解"></a>设计模式三大类详解</h2><h3 id="一、创建型模式"><a href="#一、创建型模式" class="headerlink" title="一、创建型模式"></a>一、创建型模式</h3><p><strong>特点</strong>：关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。</p>
-<p><strong>常见模式</strong>：单例、工厂方法、抽象工厂、建造者、原型。</p>
-<pre><code class="highlight mermaid">graph TD
-  B[创建型模式] --&gt; B1[单例模式]
-  B --&gt; B2[工厂方法模式]
-  B --&gt; B3[抽象工厂模式]
-  B --&gt; B4[建造者模式]
-  B --&gt; B5[原型模式]</code></pre>
-
-<p><strong>示例：单例模式（Singleton）</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单例模式示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="二、结构型模式"><a href="#二、结构型模式" class="headerlink" title="二、结构型模式"></a>二、结构型模式</h3><p><strong>特点</strong>：关注类和对象的组合，主要解决如何将类或对象按某种布局组成更大的结构。</p>
-<p><strong>常见模式</strong>：适配器、桥接、装饰器、外观、享元、代理、组合。</p>
-<pre><code class="highlight mermaid">graph TD
-  C[结构型模式] --&gt; C1[适配器模式]
-  C --&gt; C2[桥接模式]
-  C --&gt; C3[装饰器模式]
-  C --&gt; C4[外观模式]
-  C --&gt; C5[享元模式]
-  C --&gt; C6[代理模式]
-  C --&gt; C7[组合模式]</code></pre>
-
-<p><strong>示例：适配器模式（Adapter）</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 适配器模式示例</span></span><br><span class="line"><span class="comment">// 目标接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 已有的类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adaptee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">specificRequest</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;特殊请求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span> <span class="keyword">implements</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Adaptee adaptee;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Adapter</span><span class="params">(Adaptee adaptee)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.adaptee = adaptee;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span> &#123;</span><br><span class="line">        adaptee.specificRequest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Target target = new Adapter(new Adaptee());</span></span><br><span class="line"><span class="comment">// target.request();</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="三、行为型模式"><a href="#三、行为型模式" class="headerlink" title="三、行为型模式"></a>三、行为型模式</h3><p><strong>特点</strong>：关注对象之间的通信与职责分配，主要解决对象之间的高效协作。</p>
-<p><strong>常见模式</strong>：策略、模板方法、观察者、迭代器、责任链、命令、备忘录、状态、访问者、中介者、解释器。</p>
-<pre><code class="highlight mermaid">graph TD
-  D[行为型模式] --&gt; D1[策略模式]
-  D --&gt; D2[模板方法模式]
-  D --&gt; D3[观察者模式]
-  D --&gt; D4[迭代器模式]
-  D --&gt; D5[责任链模式]
-  D --&gt; D6[命令模式]
-  D --&gt; D7[备忘录模式]
-  D --&gt; D8[状态模式]
-  D --&gt; D9[访问者模式]
-  D --&gt; D10[中介者模式]
-  D --&gt; D11[解释器模式]</code></pre>
-
-<p><strong>示例：观察者模式（Observer）</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 观察者模式示例</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(String msg)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConcreteObserver</span><span class="params">(String name)</span> &#123; <span class="built_in">this</span>.name = name; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot; 收到通知: &quot;</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addObserver</span><span class="params">(Observer o)</span> &#123; observers.add(o); &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyObservers</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers) &#123;</span><br><span class="line">            o.update(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Subject subject = new Subject();</span></span><br><span class="line"><span class="comment">// subject.addObserver(new ConcreteObserver(&quot;A&quot;));</span></span><br><span class="line"><span class="comment">// subject.notifyObservers(&quot;数据更新&quot;);</span></span><br></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>设计模式不是现成的代码，而是一种思想和方法。合理地运用设计模式，可以让你的代码更优雅、更健壮。 </p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>编程思想</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -1435,6 +1261,180 @@
       <tags>
         <tag>设计模式</tag>
         <tag>创建型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>周星驰电影经典台词</title>
+    <url>/2016/10/20/%E5%91%A8%E6%98%9F%E9%A9%B0%E7%94%B5%E5%BD%B1%E7%BB%8F%E5%85%B8%E5%8F%B0%E8%AF%8D/</url>
+    <content><![CDATA[<h4 id="《国产凌凌漆》"><a href="#《国产凌凌漆》" class="headerlink" title="《国产凌凌漆》"></a>《国产凌凌漆》</h4><ul>
+<li><p>你以为躲起来就找不到你了吗？没有用的！象你这样出色的男人，无论在什么地方，都像漆黑中的萤火虫一样，那样的鲜明，那样的出众。你那忧郁的眼神，稀嘘的胡喳子，神乎其神的刀法，和那杯Dry Martine，都深深地迷住了我。不过，虽然这是这样的出色，但是行有行规，无论怎样你要付清昨晚的过夜费呀，叫女人不用给钱吗？</p>
+</li>
+<li><p>就算是一条底裤，一张厕纸，都有它的用处。</p>
+</li>
+<li><p>古有关云长全神贯注下象棋刮骨疗毒，今有我零零漆聚精会神看A片挖骨取弹头。</p>
+</li>
+</ul>
+<span id="more"></span>
+<h4 id="《破坏之王》"><a href="#《破坏之王》" class="headerlink" title="《破坏之王》"></a>《破坏之王》</h4><ul>
+<li><p>不要误会,我不是针对你,我是说在座的各位都是垃圾.</p>
+</li>
+<li><p>除暴安良是我做市民的责任，积德行善是我的兴趣</p>
+</li>
+</ul>
+<h4 id="《算死草》"><a href="#《算死草》" class="headerlink" title="《算死草》"></a>《算死草》</h4><ul>
+<li>我很孤独用英文怎么讲，I LOVE YOU.</li>
+</ul>
+<h4 id="《喜剧之王》"><a href="#《喜剧之王》" class="headerlink" title="《喜剧之王》"></a>《喜剧之王》</h4><ul>
+<li><p>其实我是一个演员</p>
+</li>
+<li><p>看，前面漆黑一片，什么都看不到。”-“也不是，天亮以后便会很美的。”</p>
+</li>
+</ul>
+<h4 id="《唐伯虎点秋香》"><a href="#《唐伯虎点秋香》" class="headerlink" title="《唐伯虎点秋香》"></a>《唐伯虎点秋香》</h4><ul>
+<li>秉夫人，小人本住在，苏州的城边，家中有屋又有田，生活乐无边，谁知那唐伯虎，他蛮横不留情，勾结官府目无天，占我大屋夺我田，我爷爷跟他来翻脸，反被他一棍来打扁，我奶奶骂他欺善民，反被他捉进了唐府，强奸了一百遍，一百遍。最后她悬梁自尽遗恨人间。他还将我父子，逐出了家园，流浪到江边。我为求养老爹，惟有独自行乞在庙前，谁知那唐伯虎，他实在太阴险，知道此情形，竟派人来暗算，将我父子狂殴在市前，小人身壮健，残命得留全，可怜老父他魂归天，此恨更难添。我为求葬老爹，惟有卖身为奴自作贱，一边勤赚钱，一边读书篇，发誓把功名显，手刃仇人意志坚，从此唐寅诗集伴身边，我牢记此仇不共戴天。。。</li>
+</ul>
+<h4 id="《少林足球》"><a href="#《少林足球》" class="headerlink" title="《少林足球》"></a>《少林足球》</h4><ul>
+<li><p>做人如果没有理想，那跟咸鱼有什么区别？</p>
+</li>
+<li><p>球不是这么踢滴。</p>
+</li>
+<li><p>我觉得我现在很漂亮，我也很喜欢我现在这个样子，你要是不喜欢看，你可以走开。</p>
+</li>
+<li><p>我一秒钟几十万上下，我会和你们去吃杂碎面？</p>
+</li>
+</ul>
+<h4 id="《大话西游》"><a href="#《大话西游》" class="headerlink" title="《大话西游》"></a>《大话西游》</h4><ul>
+<li><p>曾经有一段真挚的感情摆在我面前我没有珍惜，等到失去时才后悔莫及。人生最悲哀的事情莫过于此。如果上天能再给我一次重来的机会，我会对那个女孩说三个字：我爱你。如果要在这段感情前加个期限，我希望是一万年！</p>
+</li>
+<li><p>爱一个人需要理由吗？不需要吗？需要吗？</p>
+</li>
+</ul>
+<h4 id="《功夫》"><a href="#《功夫》" class="headerlink" title="《功夫》"></a>《功夫》</h4><ul>
+<li>本来我是想拿那些钱，当个律师，或者是医生，但是一想到要拯救世界和平，哎。。。</li>
+</ul>
+<h4 id="《长江七号》"><a href="#《长江七号》" class="headerlink" title="《长江七号》"></a>《长江七号》</h4><ul>
+<li>我们虽然穷但不乱说脏话，我们不去偷，我们不去抢，不属于自己的东西，我们不会拿。</li>
+</ul>
+<h4 id="《行运一条龙》"><a href="#《行运一条龙》" class="headerlink" title="《行运一条龙》"></a>《行运一条龙》</h4><ul>
+<li>我告诉你，泡妞的方法只有两个字—英俊</li>
+</ul>
+]]></content>
+      <categories>
+        <category>电影</category>
+      </categories>
+      <tags>
+        <tag>周星驰</tag>
+        <tag>台词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速排序</title>
+    <url>/2017/02/17/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n)算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>1.选定一个合适的值（理想情况中值最好，但实现中一般使用数组第一个值）,称为“枢轴”(pivot)。<br>2.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。<br>3.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
+<span id="more"></span>
+<h2 id="java实现"><a href="#java实现" class="headerlink" title="java实现"></a>java实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">//原地分区实现</span><br><span class="line">private static int partition(int[] arr, int low, int high)</span><br><span class="line">&#123;</span><br><span class="line">    int pivot = arr[low];//以第一个值为pivot</span><br><span class="line">    while (low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        while (low &lt; high &amp;&amp; arr[high] &gt;= pivot)</span><br><span class="line">        &#123;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[low] = arr[high];</span><br><span class="line">        while (low &lt; high &amp;&amp; arr[low] &lt;= pivot)</span><br><span class="line">        &#123;</span><br><span class="line">            low++;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[high] = arr[low];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[low] = pivot;</span><br><span class="line">    return low;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void sort(int[] arr, int low, int high)</span><br><span class="line">  &#123;</span><br><span class="line">      if (low &gt;= high)</span><br><span class="line">      &#123;</span><br><span class="line">          return;</span><br><span class="line">      &#125;</span><br><span class="line">      int pivotIndex = partition(arr, low, high);</span><br><span class="line">      sort(arr, low, pivotIndex - 1);</span><br><span class="line">      sort(arr, pivotIndex + 1, high);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">  int[] arr = &#123;7, 4, 3, 8, 1, 2, 5, 6&#125;;</span><br><span class="line"></span><br><span class="line">  sort(arr, 0, arr.length - 1);</span><br><span class="line">  for (int i : arr)</span><br><span class="line">  &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>尾递归</title>
+    <url>/2017/05/10/%E5%B0%BE%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在数学与计算机科学中，是指在函数的定义中使用函数自身的方法。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//计算num+(num-1)+(num-2)+...</span><br><span class="line">public int decrease(int num)</span><br><span class="line">&#123;</span><br><span class="line">    if (num == 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return decrease(num - 1) + num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>如果num比较小，代码是没有问题，但是如果num比较大递归比较深的话，就会栈溢出：java.lang.StackOverflowError<br>原因是因为decrease函数调用自身，然后再加上num，此时的需要等待decrease调用完成才能完成加法，也就是必须等到最后一个计算完，才能一个一个的返回，因此需要递归到最后一个函数完成时才能一个一个释放函数，所以当递归比较深的话，就会栈溢出。</p>
+<h2 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h2><p>尾递归是在函数最后调用自身，每次调用完成后执行下次调用，不用存储函数状态，所以也不会有栈溢出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static int decrease(int num, int total)</span><br><span class="line">&#123;</span><br><span class="line">    if (num == 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return decrease(num-1,total + num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式概览</title>
+    <url>/2025/07/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A7%88/</url>
+    <content><![CDATA[<h1 id="设计模式概览"><a href="#设计模式概览" class="headerlink" title="设计模式概览"></a>设计模式概览</h1><h2 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a>什么是设计模式？</h2><p>设计模式（Design Pattern）是软件开发中总结和提炼出来的、被反复使用的、代码设计经验的最佳实践。它们是对软件设计中普遍存在的各种问题，所提出的通用解决方案。</p>
+<h2 id="设计模式能做什么？"><a href="#设计模式能做什么？" class="headerlink" title="设计模式能做什么？"></a>设计模式能做什么？</h2><ul>
+<li>解决软件开发中常见的设计问题。</li>
+<li>提高代码的可复用性、可维护性和可扩展性。</li>
+<li>促进团队成员之间的沟通，形成统一的设计语言。</li>
+<li>降低开发风险，加快开发速度。</li>
+</ul>
+<h2 id="设计模式的好处"><a href="#设计模式的好处" class="headerlink" title="设计模式的好处"></a>设计模式的好处</h2><ol>
+<li><strong>复用性</strong>：通过抽象和封装，提升代码的复用率。</li>
+<li><strong>可维护性</strong>：结构清晰，便于后期维护和升级。</li>
+<li><strong>可扩展性</strong>：易于在现有系统上添加新功能。</li>
+<li><strong>灵活性</strong>：降低模块之间的耦合度，提高系统灵活性。</li>
+<li><strong>标准化</strong>：为开发团队提供统一的设计标准和术语。</li>
+</ol>
+<h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p>常见的设计模式分为三大类：创建型、结构型、行为型。</p>
+<h2 id="设计模式三大类详解"><a href="#设计模式三大类详解" class="headerlink" title="设计模式三大类详解"></a>设计模式三大类详解</h2><h3 id="一、创建型模式"><a href="#一、创建型模式" class="headerlink" title="一、创建型模式"></a>一、创建型模式</h3><p><strong>特点</strong>：关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。</p>
+<p><strong>常见模式</strong>：单例、工厂方法、抽象工厂、建造者、原型。</p>
+<pre><code class="highlight mermaid">graph TD
+  B[创建型模式] --&gt; B1[单例模式]
+  B --&gt; B2[工厂方法模式]
+  B --&gt; B3[抽象工厂模式]
+  B --&gt; B4[建造者模式]
+  B --&gt; B5[原型模式]</code></pre>
+
+<p><strong>示例：单例模式（Singleton）</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单例模式示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="二、结构型模式"><a href="#二、结构型模式" class="headerlink" title="二、结构型模式"></a>二、结构型模式</h3><p><strong>特点</strong>：关注类和对象的组合，主要解决如何将类或对象按某种布局组成更大的结构。</p>
+<p><strong>常见模式</strong>：适配器、桥接、装饰器、外观、享元、代理、组合。</p>
+<pre><code class="highlight mermaid">graph TD
+  C[结构型模式] --&gt; C1[适配器模式]
+  C --&gt; C2[桥接模式]
+  C --&gt; C3[装饰器模式]
+  C --&gt; C4[外观模式]
+  C --&gt; C5[享元模式]
+  C --&gt; C6[代理模式]
+  C --&gt; C7[组合模式]</code></pre>
+
+<p><strong>示例：适配器模式（Adapter）</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 适配器模式示例</span></span><br><span class="line"><span class="comment">// 目标接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 已有的类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adaptee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">specificRequest</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;特殊请求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span> <span class="keyword">implements</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Adaptee adaptee;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Adapter</span><span class="params">(Adaptee adaptee)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.adaptee = adaptee;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span> &#123;</span><br><span class="line">        adaptee.specificRequest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Target target = new Adapter(new Adaptee());</span></span><br><span class="line"><span class="comment">// target.request();</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="三、行为型模式"><a href="#三、行为型模式" class="headerlink" title="三、行为型模式"></a>三、行为型模式</h3><p><strong>特点</strong>：关注对象之间的通信与职责分配，主要解决对象之间的高效协作。</p>
+<p><strong>常见模式</strong>：策略、模板方法、观察者、迭代器、责任链、命令、备忘录、状态、访问者、中介者、解释器。</p>
+<pre><code class="highlight mermaid">graph TD
+  D[行为型模式] --&gt; D1[策略模式]
+  D --&gt; D2[模板方法模式]
+  D --&gt; D3[观察者模式]
+  D --&gt; D4[迭代器模式]
+  D --&gt; D5[责任链模式]
+  D --&gt; D6[命令模式]
+  D --&gt; D7[备忘录模式]
+  D --&gt; D8[状态模式]
+  D --&gt; D9[访问者模式]
+  D --&gt; D10[中介者模式]
+  D --&gt; D11[解释器模式]</code></pre>
+
+<p><strong>示例：观察者模式（Observer）</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 观察者模式示例</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(String msg)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConcreteObserver</span><span class="params">(String name)</span> &#123; <span class="built_in">this</span>.name = name; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot; 收到通知: &quot;</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addObserver</span><span class="params">(Observer o)</span> &#123; observers.add(o); &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyObservers</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers) &#123;</span><br><span class="line">            o.update(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// Subject subject = new Subject();</span></span><br><span class="line"><span class="comment">// subject.addObserver(new ConcreteObserver(&quot;A&quot;));</span></span><br><span class="line"><span class="comment">// subject.notifyObservers(&quot;数据更新&quot;);</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>设计模式不是现成的代码，而是一种思想和方法。合理地运用设计模式，可以让你的代码更优雅、更健壮。 </p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>编程思想</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
       </tags>
   </entry>
 </search>
