@@ -1514,6 +1514,16 @@
 <li><strong>灵活性</strong>：降低模块之间的耦合度，提高系统灵活性。</li>
 <li><strong>标准化</strong>：为开发团队提供统一的设计标准和术语。</li>
 </ol>
+<h2 id="设计模式六大原则"><a href="#设计模式六大原则" class="headerlink" title="设计模式六大原则"></a>设计模式六大原则</h2><p>设计模式的六大原则是指导我们进行面向对象设计的重要思想，合理遵循这些原则，可以让系统更加灵活、可维护、可扩展。</p>
+<ol>
+<li><strong>单一职责原则（SRP, Single Responsibility Principle）</strong><br>一个类只负责一项职责，避免类的职责过于复杂，降低维护难度。</li>
+<li><strong>开放封闭原则（OCP, Open-Closed Principle）</strong><br>软件实体（类、模块、函数等）应该对扩展开放，对修改封闭。即在不修改原有代码的情况下扩展新功能。</li>
+<li><strong>里氏替换原则（LSP, Liskov Substitution Principle）</strong><br>子类对象能够替换父类对象，并且程序功能不受影响。保证继承体系的正确性。</li>
+<li><strong>依赖倒置原则（DIP, Dependency Inversion Principle）</strong><br>高层模块不应该依赖低层模块，二者都应该依赖其抽象。抽象不应该依赖细节，细节应该依赖抽象。</li>
+<li><strong>接口隔离原则（ISP, Interface Segregation Principle）</strong><br>不应该强迫一个类去实现它不需要的接口。多个专用接口优于一个通用接口。</li>
+<li><strong>迪米特法则（LoD, Law of Demeter）</strong><br>一个对象应该对其他对象有尽可能少的了解。只与直接的朋友通信，避免过度耦合。</li>
+</ol>
+<hr>
 <h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p>常见的设计模式分为三大类：创建型、结构型、行为型。</p>
 <h2 id="设计模式三大类详解"><a href="#设计模式三大类详解" class="headerlink" title="设计模式三大类详解"></a>设计模式三大类详解</h2><h3 id="一、创建型模式"><a href="#一、创建型模式" class="headerlink" title="一、创建型模式"></a>一、创建型模式</h3><p><strong>特点</strong>：关注对象的创建过程，目的是将对象的创建与使用分离，降低系统的耦合度。</p>
 <p><strong>常见模式</strong>：单例、工厂方法、抽象工厂、建造者、原型。</p>
