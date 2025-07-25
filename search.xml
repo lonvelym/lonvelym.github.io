@@ -1012,6 +1012,8 @@
 </ul>
 <p>这种思想贯穿于计算机科学的各个层面，从硬件到系统、架构、算法等，均有广泛应用。</p>
 <hr>
+<span id="more"></span>
+
 <h2 id="二、分而治之在各层面的应用"><a href="#二、分而治之在各层面的应用" class="headerlink" title="二、分而治之在各层面的应用"></a>二、分而治之在各层面的应用</h2><h3 id="1-计算机硬件层面"><a href="#1-计算机硬件层面" class="headerlink" title="1. 计算机硬件层面"></a>1. 计算机硬件层面</h3><p><strong>说明：</strong></p>
 <ul>
 <li>现代 CPU 采用多核设计，将复杂的计算任务分配到多个核心并行处理。</li>
@@ -1198,6 +1200,7 @@
 <li>优点：节省资源，避免冲突，便于统一管理。</li>
 <li>缺点：不适合频繁变更对象的场景，多线程下需注意线程安全。</li>
 </ul>
+<span id="more"></span>
 <h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><pre><code class="highlight mermaid">classDiagram
     class Singleton {
         -Singleton instance
@@ -1514,6 +1517,7 @@
 <li><strong>灵活性</strong>：降低模块之间的耦合度，提高系统灵活性。</li>
 <li><strong>标准化</strong>：为开发团队提供统一的设计标准和术语。</li>
 </ol>
+<span id="more"></span>
 <h2 id="设计模式六大原则"><a href="#设计模式六大原则" class="headerlink" title="设计模式六大原则"></a>设计模式六大原则</h2><p>设计模式的六大原则是指导我们进行面向对象设计的重要思想，合理遵循这些原则，可以让系统更加灵活、可维护、可扩展。</p>
 <ol>
 <li><strong>单一职责原则（SRP, Single Responsibility Principle）</strong><br>一个类只负责一项职责，避免类的职责过于复杂，降低维护难度。</li>
@@ -1587,6 +1591,8 @@
     <url>/2025/07/25/%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAMonaco%E7%BC%96%E8%BE%91%E5%99%A8%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<h1 id="如何自定义一个Monaco编辑器语言"><a href="#如何自定义一个Monaco编辑器语言" class="headerlink" title="如何自定义一个Monaco编辑器语言"></a>如何自定义一个 Monaco 编辑器语言</h1><h2 id="什么是Monaco编辑器？"><a href="#什么是Monaco编辑器？" class="headerlink" title="什么是Monaco编辑器？"></a>什么是 Monaco 编辑器？</h2><p>Monaco 编辑器是微软开发的一个开源代码编辑器，广泛用于 Visual Studio Code（VSCode）中。它支持多种编程语言，具有语法高亮、自动完成、错误提示等功能。<br><span class="exturl" data-url="aHR0cHM6Ly9taWNyb3NvZnQuZ2l0aHViLmlvL21vbmFjby1lZGl0b3Iv">https://microsoft.github.io/monaco-editor/<i class="fa fa-external-link-alt"></i></span></p>
 <h2 id="为什么要自定义语言？"><a href="#为什么要自定义语言？" class="headerlink" title="为什么要自定义语言？"></a>为什么要自定义语言？</h2><p>自定义语言可以让开发者根据特定需求创建自己的编程语言或脚本语言，并在 Monaco 编辑器中提供语法高亮、代码补全等功能。这对于特定领域的应用开发非常有用。<br>例如，我后端使用了一些规则引擎，在配置规则时需要使用特定的语法，这时候就可以自定义一个 Monaco 编辑器语言来支持这种语法。</p>
+<span id="more"></span>
+
 <h2 id="如何自定义Monaco编辑器语言？"><a href="#如何自定义Monaco编辑器语言？" class="headerlink" title="如何自定义Monaco编辑器语言？"></a>如何自定义 Monaco 编辑器语言？</h2><p>自定义 Monaco 编辑器语言的步骤如下：</p>
 <h3 id="注册语言"><a href="#注册语言" class="headerlink" title="注册语言"></a>注册语言</h3><p>使用<code>monaco.languages.register</code>方法注册自定义语言。</p>
 <figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">monaco.<span class="property">languages</span>.<span class="title function_">register</span>({<span class="attr">id</span>: <span class="string">'myCustomLanguage'</span>});</span><br></pre></td></tr></tbody></table></figure>
